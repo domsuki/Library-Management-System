@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LoginRegister
 {
@@ -17,26 +18,59 @@ namespace LoginRegister
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtUser.Text) || string.IsNullOrEmpty(txtPass.Text) || string.IsNullOrEmpty(comboBox1.Text))
+            {
+                //MessageBox.Show("One of your fields is invalid");
+                return;
+            }
+
             try
             {
                 cn.Open();
-                cmd = new SqlCommand("SELECT * FROM LoginandRegistration WHERE username = @username AND password = @password", cn);
-                cmd.Parameters.AddWithValue("@username", txtUser.Text); // Corrected parameter name
-                cmd.Parameters.AddWithValue("@password", txtPass.Text);
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
+                string query = "SELECT userType FROM LoginAndRegistration WHERE username = @username AND password = @password AND userType = @userType";
+                using (SqlCommand cmd = new SqlCommand(query, cn))
                 {
-                    loggedInUser = txtUser.Text;
-                    // Display a welcome message with the logged in user's username
-                    DialogResult result = MessageBox.Show($"Welcome, {loggedInUser}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    mainDashboard dashboard = new mainDashboard();
-                    dashboard.Show();
-                    Hide();
+                    cmd.Parameters.AddWithValue("@username", txtUser.Text);
+                    cmd.Parameters.AddWithValue("@password", txtPass.Text);
+                    cmd.Parameters.AddWithValue("@userType", comboBox1.Text);
 
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string userType = reader.GetString(0);
+                            if (userType == "Student")
+                            {
+                                loggedInUser = txtUser.Text;
+                                // Display a welcome message with the logged in user's username
+                                DialogResult result = MessageBox.Show($"Welcome, {loggedInUser}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                studentDashboard dashboard = new studentDashboard();
+                                dashboard.Show();
+                                Hide();
+                            }
+                            else if (userType == "Admin")
+                            {
+                                loggedInUser = txtUser.Text;
+                                // Display a welcome message with the logged in user's username
+                                DialogResult result = MessageBox.Show($"Welcome, {loggedInUser}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                mainDashboard dashboard = new mainDashboard();
+                                dashboard.Show();
+                                Hide();
+                            }
+                            else
+                            {
+                                // Handle unrecognized user type
+                                //MessageBox.Show("User type not recognized");
+                            }
+                        }
+                        else
+                        {
+                            // Handle incorrect username or password
+                            MessageBox.Show("Either one of your username, password and or your userType is invalid");
+                        }
+                    }
                 }
-
-                //MessageBox.Show("Invalid username or password");
             }
             catch (Exception ex)
             {
@@ -47,6 +81,8 @@ namespace LoginRegister
                 cn.Close();
             }
         }
+
+
 
         private void btnRegister_Click(object sender, EventArgs e)
         {

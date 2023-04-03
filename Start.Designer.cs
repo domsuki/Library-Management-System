@@ -35,6 +35,8 @@
             this.btnLogin = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.forgotPassLink = new System.Windows.Forms.LinkLabel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -47,10 +49,10 @@
             this.btnRegister.BackColor = System.Drawing.Color.Moccasin;
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegister.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnRegister.Location = new System.Drawing.Point(522, 310);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRegister.Location = new System.Drawing.Point(696, 382);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(158, 56);
+            this.btnRegister.Size = new System.Drawing.Size(211, 69);
             this.btnRegister.TabIndex = 17;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = false;
@@ -61,10 +63,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label3.Location = new System.Drawing.Point(452, 117);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(603, 144);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(318, 37);
+            this.label3.Size = new System.Drawing.Size(400, 46);
             this.label3.TabIndex = 18;
             this.label3.Text = "What do you want to do?";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -80,10 +81,10 @@
             this.btnLogin.BackColor = System.Drawing.Color.Moccasin;
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.btnLogin.Location = new System.Drawing.Point(522, 211);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLogin.Location = new System.Drawing.Point(696, 260);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(158, 56);
+            this.btnLogin.Size = new System.Drawing.Size(211, 69);
             this.btnLogin.TabIndex = 16;
             this.btnLogin.Text = "Log In";
             this.btnLogin.UseVisualStyleBackColor = false;
@@ -94,34 +95,57 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semilight", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label4.Location = new System.Drawing.Point(59, 64);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(79, 79);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(676, 50);
+            this.label4.Size = new System.Drawing.Size(864, 62);
             this.label4.TabIndex = 19;
             this.label4.Text = "Welcome to Library Management System";
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.forgotPassLink);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.btnRegister);
-            this.panel1.Location = new System.Drawing.Point(14, 10);
+            this.panel1.Location = new System.Drawing.Point(19, 12);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(772, 430);
+            this.panel1.Size = new System.Drawing.Size(1029, 529);
             this.panel1.TabIndex = 21;
+            // 
+            // forgotPassLink
+            // 
+            this.forgotPassLink.AutoSize = true;
+            this.forgotPassLink.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.forgotPassLink.Location = new System.Drawing.Point(439, 485);
+            this.forgotPassLink.Name = "forgotPassLink";
+            this.forgotPassLink.Size = new System.Drawing.Size(146, 25);
+            this.forgotPassLink.TabIndex = 20;
+            this.forgotPassLink.TabStop = true;
+            this.forgotPassLink.Text = "Forgot Password";
+            this.forgotPassLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.forgotPassLink_LinkClicked);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(84, 485);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(197, 25);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Forgot your password?";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label2.Location = new System.Drawing.Point(493, 184);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(657, 226);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(228, 25);
+            this.label2.Size = new System.Drawing.Size(287, 32);
             this.label2.TabIndex = 18;
             this.label2.Text = "Already have an account?";
             this.label2.Click += new System.EventHandler(this.label3_Click);
@@ -131,10 +155,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label1.Location = new System.Drawing.Point(498, 283);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(664, 348);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 25);
+            this.label1.Size = new System.Drawing.Size(266, 32);
             this.label1.TabIndex = 18;
             this.label1.Text = "Don\'t have an account?";
             this.label1.Click += new System.EventHandler(this.label3_Click);
@@ -142,26 +165,29 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LoginRegister.Properties.Resources.UC_logofinal;
-            this.pictureBox1.Location = new System.Drawing.Point(81, 149);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(108, 183);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(372, 211);
+            this.pictureBox1.Size = new System.Drawing.Size(496, 260);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
             // Start
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "Start";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Start";
+            this.Load += new System.EventHandler(this.Start_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -180,5 +206,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel forgotPassLink;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -157,7 +157,7 @@ namespace LoginRegister
         {
             string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
             string searchText = SearchBox.Text;
-            string query = "SELECT title, booksid, author, quantity FROM BookData WHERE title LIKE '%' + @searchText + '%' OR author LIKE '%' + @searchText + '%'";
+            string query = "SELECT title, booksid, author, quantity FROM BookData WHERE title LIKE '%' + @searchText + '%' OR author LIKE '%' + @searchText + '%' OR booksid LIKE '%' + @searchText + '%'";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(query, con))

@@ -23,9 +23,10 @@ namespace LoginRegister
                 {
                     cn.Open();
                     {
-                        cmd = new SqlCommand("INSERT INTO LoginandRegistration (username, password) VALUES (@username, @password)", cn);
+                        cmd = new SqlCommand("INSERT INTO LoginandRegistration (username, password, userType) VALUES (@username, @password, @userType)", cn);
                         cmd.Parameters.AddWithValue("@username", txtUsername.Text);
                         cmd.Parameters.AddWithValue("@password", txtPassword.Text); // Corrected parameter name
+                        cmd.Parameters.AddWithValue("@userType", comboBox1.Text);
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Registration Successful!");
@@ -71,5 +72,9 @@ namespace LoginRegister
 
         }
 
+        private void txtPass_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

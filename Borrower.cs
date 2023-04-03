@@ -478,7 +478,16 @@ namespace LoginRegister
                     // Set up the table headers
                     string[] tableHeadings = { "Student ID", "First Name", "Last Name", "Book ID", "Title", "Quantity", "Date Returned" };
                     Font headingFont = new Font("Arial", 12, FontStyle.Bold);
-                    int[] columnWidths = { ev.PageBounds.Width / 10, ev.PageBounds.Width / 5, ev.PageBounds.Width / 5, ev.PageBounds.Width / 10 - 10, ev.PageBounds.Width / 5, ev.PageBounds.Width / 10, ev.PageBounds.Width / 5 };
+                    int[] columnWidths = {
+                    ev.PageBounds.Width / 8,  // Student ID
+                    ev.PageBounds.Width / 8,   // First Name
+                    ev.PageBounds.Width / 8,   // Last Name
+                    ev.PageBounds.Width / 8,  // Book ID
+                    ev.PageBounds.Width / 8,   // Title
+                    ev.PageBounds.Width / 8,  // Quantity
+                    ev.PageBounds.Width / 8    // Date Returned
+                    };
+
                     int rowHeight = font.Height + 5;
 
                     // Draw table headers
@@ -635,7 +644,7 @@ namespace LoginRegister
         {
             string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
             string searchText = bookSearch.Text;
-            string query = "SELECT title, booksid, author, quantity FROM BookData WHERE title LIKE '%' + @searchText + '%' OR author LIKE '%' + @searchText + '%'";
+            string query = "SELECT title, booksid, author, quantity FROM BookData WHERE title LIKE '%' + @searchText + '%' OR author LIKE '%' + @searchText + '%' OR booksid LIKE '%' + @searchText + '%'";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(query, con))

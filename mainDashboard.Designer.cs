@@ -53,14 +53,14 @@
             // borrowerToolStripMenuItem
             // 
             this.borrowerToolStripMenuItem.Name = "borrowerToolStripMenuItem";
-            this.borrowerToolStripMenuItem.Size = new System.Drawing.Size(98, 26);
+            this.borrowerToolStripMenuItem.Size = new System.Drawing.Size(98, 24);
             this.borrowerToolStripMenuItem.Text = "Transaction";
             this.borrowerToolStripMenuItem.Click += new System.EventHandler(this.borrowerToolStripMenuItem_Click);
             // 
             // booksToolStripMenuItem
             // 
             this.booksToolStripMenuItem.Name = "booksToolStripMenuItem";
-            this.booksToolStripMenuItem.Size = new System.Drawing.Size(63, 26);
+            this.booksToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
             this.booksToolStripMenuItem.Text = "Books";
             this.booksToolStripMenuItem.Click += new System.EventHandler(this.booksToolStripMenuItem_Click);
             // 
@@ -74,14 +74,14 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(697, 30);
+            this.menuStrip2.Size = new System.Drawing.Size(697, 28);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
             // studentLogToolStripMenuItem
             // 
             this.studentLogToolStripMenuItem.Name = "studentLogToolStripMenuItem";
-            this.studentLogToolStripMenuItem.Size = new System.Drawing.Size(58, 26);
+            this.studentLogToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.studentLogToolStripMenuItem.Text = "Users";
             this.studentLogToolStripMenuItem.Click += new System.EventHandler(this.studentLogToolStripMenuItem_Click);
             // 

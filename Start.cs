@@ -29,5 +29,16 @@ namespace LoginRegister
             Form1 login = new Form1();
             login.ShowDialog();
         }
+
+        private void forgotPassLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ForgotPassword forgotpassword = new ForgotPassword();
+            forgotpassword.ShowDialog();
+        }
+
+        private void Start_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
