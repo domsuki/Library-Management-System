@@ -360,13 +360,27 @@ namespace LoginRegister
             int rowHeight = font.Height + 5;
 
             // Set up the event handlers for printing and previewing
-            doc.PrintPage += (s, ev) => PrintPage(s, ev, font, leftMargin, topMargin, column1Left, column2Left, column3Left, column4Left, column5Left, column6Left, column7Left, column8Left, rowHeight);
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.DefaultPageSettings = doc.DefaultPageSettings;
+            printDoc.PrintPage += (s, ev) => PrintPage(s, ev, font, leftMargin, topMargin, column1Left, column2Left, column3Left, column4Left, column5Left, column6Left, column7Left, column8Left, rowHeight);
             PrintPreviewDialog preview = new PrintPreviewDialog();
-            preview.Document = doc;
+            preview.Document = printDoc;
 
             // Show the print preview dialog
-            preview.ShowDialog();
+            if (preview.ShowDialog() == DialogResult.OK)
+            {
+                // Show the print dialog if the user clicked the print button in the preview dialog
+                PrintDialog printDialog = new PrintDialog();
+                printDialog.Document = printDoc;
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    printDoc.Print();
+                }
+            }
         }
+
+
+
 
         private void PrintPage(object sender, PrintPageEventArgs ev, Font font, int leftMargin, int topMargin, int column1Left, int column2Left, int column3Left, int column4Left, int column5Left, int column6Left, int column7Left, int column8Left, int rowHeight)
         {
@@ -379,6 +393,13 @@ namespace LoginRegister
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
 
+                    string label = "Borrowed";
+                    Font labelFont = new Font("Arial", 18, FontStyle.Bold);
+                    SizeF labelSize = ev.Graphics.MeasureString(label, labelFont);
+                    float labelX = leftMargin + (ev.PageBounds.Width - leftMargin - ev.PageSettings.Margins.Right - labelSize.Width) / 2;
+                    ev.Graphics.DrawString(label, labelFont, Brushes.Black, labelX, topMargin);
+
+                    topMargin += 40;
 
                     // Set up the table headings
 
@@ -474,6 +495,14 @@ namespace LoginRegister
                     // Open the connection and execute the command
                     connection.Open();
                     SqlDataReader reader = command.ExecuteReader();
+
+                    string label = "Returned";
+                    Font labelFont = new Font("Arial", 18, FontStyle.Bold);
+                    SizeF labelSize = ev.Graphics.MeasureString(label, labelFont);
+                    float labelX = leftMargin + (ev.PageBounds.Width - leftMargin - ev.PageSettings.Margins.Right - labelSize.Width) / 2;
+                    ev.Graphics.DrawString(label, labelFont, Brushes.Black, labelX, topMargin);
+
+                    topMargin += 40;
 
                     // Set up the table headers
                     string[] tableHeadings = { "Student ID", "First Name", "Last Name", "Book ID", "Title", "Quantity", "Date Returned" };

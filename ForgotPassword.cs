@@ -38,8 +38,6 @@ namespace LoginRegister
                         {
                             MessageBox.Show("Password updated successfully!");
                             this.Hide();
-                            Form1 form1 = new Form1();
-                            form1.Show();
                         }
                         else
                         {
@@ -60,6 +58,11 @@ namespace LoginRegister
             {
                 MessageBox.Show("Please enter a value in both fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

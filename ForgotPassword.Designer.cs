@@ -107,6 +107,7 @@
             this.txtPassword.Size = new System.Drawing.Size(304, 38);
             this.txtPassword.TabIndex = 9;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // txtUsername
             // 

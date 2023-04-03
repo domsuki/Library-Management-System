@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -20,7 +23,6 @@ namespace LoginRegister
         {
             if (string.IsNullOrEmpty(txtUser.Text) || string.IsNullOrEmpty(txtPass.Text) || string.IsNullOrEmpty(comboBox1.Text))
             {
-                //MessageBox.Show("One of your fields is invalid");
                 return;
             }
 
@@ -28,46 +30,64 @@ namespace LoginRegister
             {
                 cn.Open();
 
-                string query = "SELECT userType FROM LoginAndRegistration WHERE username = @username AND password = @password AND userType = @userType";
+                string query = "SELECT userType, password, [key], iv FROM LoginandRegistration WHERE username = @username AND userType = @userType";
                 using (SqlCommand cmd = new SqlCommand(query, cn))
                 {
                     cmd.Parameters.AddWithValue("@username", txtUser.Text);
-                    cmd.Parameters.AddWithValue("@password", txtPass.Text);
                     cmd.Parameters.AddWithValue("@userType", comboBox1.Text);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            string userType = reader.GetString(0);
-                            if (userType == "Student")
+                            string encryptedPassword = reader.GetString(1);
+                            string keyBase64 = reader.IsDBNull(2) ? null : reader.GetString(2);
+                            byte[] key = keyBase64 == null ? null : Convert.FromBase64String(keyBase64);
+                            byte[] iv = Convert.FromBase64String(reader.GetString(3));
+
+                            // Decrypt the password using the encryption key and IV
+                            string decryptedPassword = DecryptStringAES(Convert.FromBase64String(encryptedPassword), key, iv);
+
+                            if (decryptedPassword == null)
                             {
-                                loggedInUser = txtUser.Text;
-                                // Display a welcome message with the logged in user's username
-                                DialogResult result = MessageBox.Show($"Welcome, {loggedInUser}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                studentDashboard dashboard = new studentDashboard();
-                                dashboard.Show();
-                                Hide();
+                                MessageBox.Show("Unable to decrypt the password");
                             }
-                            else if (userType == "Admin")
+                            else if (decryptedPassword == txtPass.Text)
                             {
-                                loggedInUser = txtUser.Text;
-                                // Display a welcome message with the logged in user's username
-                                DialogResult result = MessageBox.Show($"Welcome, {loggedInUser}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                mainDashboard dashboard = new mainDashboard();
-                                dashboard.Show();
-                                Hide();
+                                // Determine the user type and show the appropriate form
+                                string userType = reader.GetString(0);
+
+                                if (userType == "Student")
+                                {
+                                    loggedInUser = txtUser.Text;
+                                    // Display a welcome message with the logged in user's username
+                                    DialogResult result = MessageBox.Show($"Welcome, {loggedInUser}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    studentDashboard dashboard = new studentDashboard();
+                                    dashboard.Show();
+                                    Hide();
+                                }
+                                else if (userType == "Admin")
+                                {
+                                    loggedInUser = txtUser.Text;
+                                    // Display a welcome message with the logged in user's username
+                                    DialogResult result = MessageBox.Show($"Welcome, {loggedInUser}!", "Login Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    mainDashboard dashboard = new mainDashboard();
+                                    dashboard.Show();
+                                    Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid user type. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                             else
                             {
-                                // Handle unrecognized user type
-                                //MessageBox.Show("User type not recognized");
+                                MessageBox.Show("The password you have entered is incorrect.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else
                         {
-                            // Handle incorrect username or password
-                            MessageBox.Show("Either one of your username, password and or your userType is invalid");
+                            MessageBox.Show("Error: Either the Username, Password or UserType is invalid, or does not exist to the record. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -81,6 +101,28 @@ namespace LoginRegister
                 cn.Close();
             }
         }
+
+
+
+
+        private string DecryptStringAES(byte[] cipherText, byte[] key, byte[] iv)
+        {
+            using (Aes aes = Aes.Create())
+            {
+                aes.Key = key;
+                aes.IV = iv;
+
+                using (ICryptoTransform decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
+                {
+                    byte[] decryptedTextBytes = decryptor.TransformFinalBlock(cipherText, 0, cipherText.Length);
+                    string decryptedText = Encoding.UTF8.GetString(decryptedTextBytes);
+
+                    return decryptedText;
+                }
+            }
+        }
+
+
 
 
 

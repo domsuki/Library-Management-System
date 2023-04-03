@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows.Forms;
 
 namespace LoginRegister
@@ -21,18 +23,38 @@ namespace LoginRegister
             {
                 try
                 {
+                    string password = txtPassword.Text;
+                    byte[] encryptedPassword;
+                    byte[] key;
+                    byte[] iv;
+
+                    using (Aes aes = Aes.Create())
+                    {
+                        aes.KeySize = 256;
+                        key = aes.Key;
+                        iv = aes.IV;
+
+                        using (var encryptor = aes.CreateEncryptor(key, iv))
+                        {
+                            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                            encryptedPassword = encryptor.TransformFinalBlock(passwordBytes, 0, passwordBytes.Length);
+                        }
+                    }
+
                     cn.Open();
                     {
-                        cmd = new SqlCommand("INSERT INTO LoginandRegistration (username, password, userType) VALUES (@username, @password, @userType)", cn);
+                        cmd = new SqlCommand("INSERT INTO LoginandRegistration (username, password, userType, [key], iv) VALUES (@username, @password, @userType, @key, @iv)", cn);
                         cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-                        cmd.Parameters.AddWithValue("@password", txtPassword.Text); // Corrected parameter name
+                        cmd.Parameters.AddWithValue("@password", Convert.ToBase64String(encryptedPassword));
                         cmd.Parameters.AddWithValue("@userType", comboBox1.Text);
+                        cmd.Parameters.AddWithValue("@key", Convert.ToBase64String(key));
+                        cmd.Parameters.AddWithValue("@iv", Convert.ToBase64String(iv));
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Registration Successful!");
-                        this.Hide(); // hide the current form
-                        Form1 form1 = new Form1(); // create a new instance of Form1
-                        form1.Show(); // show the new instance of Form1
+                        this.Hide();
+                        Form1 form1 = new Form1();
+                        form1.Show();
                     }
                 }
                 catch (Exception ex)
@@ -49,6 +71,7 @@ namespace LoginRegister
                 MessageBox.Show("Please enter a value in both fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
