@@ -206,9 +206,9 @@
             this.label5.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label5.Location = new System.Drawing.Point(632, 370);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 25);
+            this.label5.Size = new System.Drawing.Size(91, 25);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Log In As:";
+            this.label5.Text = "Log in as";
             this.label5.Click += new System.EventHandler(this.label2_Click);
             // 
             // Form1

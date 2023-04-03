@@ -49,7 +49,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(452, 377);
+            this.label5.Location = new System.Drawing.Point(425, 387);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(108, 25);
@@ -60,7 +60,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(239, 377);
+            this.label4.Location = new System.Drawing.Point(212, 387);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 25);
@@ -72,7 +72,7 @@
             this.logoutbtn.BackColor = System.Drawing.Color.Moccasin;
             this.logoutbtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logoutbtn.ForeColor = System.Drawing.Color.DarkBlue;
-            this.logoutbtn.Location = new System.Drawing.Point(384, 159);
+            this.logoutbtn.Location = new System.Drawing.Point(328, 181);
             this.logoutbtn.Margin = new System.Windows.Forms.Padding(4);
             this.logoutbtn.Name = "logoutbtn";
             this.logoutbtn.Size = new System.Drawing.Size(134, 44);
@@ -86,7 +86,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Navy;
-            this.label3.Location = new System.Drawing.Point(379, 114);
+            this.label3.Location = new System.Drawing.Point(323, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(284, 25);
             this.label3.TabIndex = 15;
@@ -98,11 +98,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Light", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(372, 50);
+            this.label1.Location = new System.Drawing.Point(316, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 66);
+            this.label1.Size = new System.Drawing.Size(404, 66);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Welcome";
+            this.label1.Text = "Welcome Student!";
             // 
             // menuStrip2
             // 
@@ -113,7 +113,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(786, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(749, 28);
             this.menuStrip2.TabIndex = 23;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -134,7 +134,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::LoginRegister.Properties.Resources._2417791;
-            this.pictureBox3.Location = new System.Drawing.Point(444, 271);
+            this.pictureBox3.Location = new System.Drawing.Point(417, 281);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(116, 102);
@@ -146,7 +146,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::LoginRegister.Properties.Resources.Closed_Book_Icon_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(213, 271);
+            this.pictureBox2.Location = new System.Drawing.Point(186, 281);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(116, 102);
@@ -158,7 +158,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LoginRegister.Properties.Resources.UC_logofinal;
-            this.pictureBox1.Location = new System.Drawing.Point(100, 50);
+            this.pictureBox1.Location = new System.Drawing.Point(44, 72);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(258, 137);
@@ -171,7 +171,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(786, 443);
+            this.ClientSize = new System.Drawing.Size(749, 455);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label5);

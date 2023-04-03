@@ -74,7 +74,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(697, 28);
+            this.menuStrip2.Size = new System.Drawing.Size(735, 28);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -90,11 +90,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Light", 29.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(301, 58);
+            this.label1.Location = new System.Drawing.Point(323, 70);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 66);
+            this.label1.Size = new System.Drawing.Size(380, 66);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Welcome";
+            this.label1.Text = "Welcome Admin!";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
@@ -111,7 +111,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Navy;
-            this.label3.Location = new System.Drawing.Point(308, 122);
+            this.label3.Location = new System.Drawing.Point(330, 134);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(284, 25);
             this.label3.TabIndex = 7;
@@ -123,7 +123,7 @@
             this.button5.BackColor = System.Drawing.Color.Moccasin;
             this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.DarkBlue;
-            this.button5.Location = new System.Drawing.Point(313, 167);
+            this.button5.Location = new System.Drawing.Point(335, 179);
             this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(134, 44);
@@ -136,7 +136,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(308, 384);
+            this.label4.Location = new System.Drawing.Point(329, 393);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 25);
@@ -148,7 +148,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(521, 384);
+            this.label5.Location = new System.Drawing.Point(542, 393);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(108, 25);
@@ -160,7 +160,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(88, 383);
+            this.label7.Location = new System.Drawing.Point(109, 392);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 25);
@@ -171,7 +171,7 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::LoginRegister.Properties.Resources._326914;
-            this.pictureBox5.Location = new System.Drawing.Point(65, 278);
+            this.pictureBox5.Location = new System.Drawing.Point(86, 287);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(107, 102);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -182,7 +182,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::LoginRegister.Properties.Resources._2417791;
-            this.pictureBox3.Location = new System.Drawing.Point(513, 278);
+            this.pictureBox3.Location = new System.Drawing.Point(534, 287);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(116, 102);
@@ -194,7 +194,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::LoginRegister.Properties.Resources.Closed_Book_Icon_svg;
-            this.pictureBox2.Location = new System.Drawing.Point(282, 278);
+            this.pictureBox2.Location = new System.Drawing.Point(303, 287);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(116, 102);
@@ -206,7 +206,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LoginRegister.Properties.Resources.UC_logofinal;
-            this.pictureBox1.Location = new System.Drawing.Point(29, 58);
+            this.pictureBox1.Location = new System.Drawing.Point(51, 70);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(258, 137);
@@ -220,7 +220,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(697, 451);
+            this.ClientSize = new System.Drawing.Size(735, 466);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.label5);
