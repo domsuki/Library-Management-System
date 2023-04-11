@@ -144,5 +144,11 @@ namespace LoginRegister
         {
 
         }
+
+        private void forgotPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ForgotPassword forgotpassword = new ForgotPassword();
+            forgotpassword.ShowDialog();
+        }
     }
 }

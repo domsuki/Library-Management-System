@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,21 +28,46 @@ namespace LoginRegister
             {
                 try
                 {
-                    cn.Open();
-                    {
-                        cmd = new SqlCommand("UPDATE LoginandRegistration SET password = @password WHERE username = @username", cn);
-                        cmd.Parameters.AddWithValue("@username", txtUsername.Text);
-                        cmd.Parameters.AddWithValue("@password", txtPassword.Text);
+                    string password = txtPassword.Text;
+                    byte[] encryptedPassword;
+                    byte[] key;
+                    byte[] iv;
 
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
+                    using (Aes aes = Aes.Create())
+                    {
+                        aes.KeySize = 256;
+                        key = aes.Key;
+                        iv = aes.IV;
+
+                        using (var encryptor = aes.CreateEncryptor(key, iv))
                         {
-                            MessageBox.Show("Password updated successfully!");
-                            this.Hide();
+                            byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
+                            encryptedPassword = encryptor.TransformFinalBlock(passwordBytes, 0, passwordBytes.Length);
                         }
-                        else
+                    }
+
+                    using (SqlConnection cn = new SqlConnection(@"Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True"))
+                    {
+                        cn.Open();
+
+                        using(SqlCommand cmd = new SqlCommand("UPDATE LoginandRegistration SET password = @password, [key] = @key, iv = @iv WHERE username = @username", cn))
                         {
-                            MessageBox.Show("User not found. Please check the username and try again.");
+                            cmd.Parameters.AddWithValue("@username", txtUsername.Text);
+                            cmd.Parameters.AddWithValue("@password", Convert.ToBase64String(encryptedPassword));
+                            cmd.Parameters.AddWithValue("@key", Convert.ToBase64String(key));
+                            cmd.Parameters.AddWithValue("@iv", Convert.ToBase64String(iv));
+
+                            int rowsAffected = cmd.ExecuteNonQuery();
+
+                            if (rowsAffected > 0)
+                            {
+                                MessageBox.Show("Password updated successfully!");
+                                this.Hide();
+                            }
+                            else
+                            {
+                                MessageBox.Show("User not found. Please check the username and try again.");
+                            }
                         }
                     }
                 }
@@ -49,16 +75,13 @@ namespace LoginRegister
                 {
                     MessageBox.Show("An error occurred: " + ex.Message);
                 }
-                finally
-                {
-                    cn.Close();
-                }
             }
             else
             {
                 MessageBox.Show("Please enter a value in both fields", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
         {
