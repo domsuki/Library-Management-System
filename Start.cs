@@ -32,7 +32,8 @@ namespace LoginRegister
 
         private void forgotPassLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("To reset your password, you must need an administrator access to continue.", "Reset Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ForgotPassword forgotpassword = new ForgotPassword();
+            forgotpassword.Show();
         }
 
         private void Start_Load(object sender, EventArgs e)

@@ -80,8 +80,8 @@ namespace LoginRegister
                         int quantity = count; // assign count value to quantity variable
                         if (count > 0)
                         {
-                            DialogResult dialogResult = MessageBox.Show("The book is already borrowed. Do you want to update the quantity?", "Update Quantity", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                            if (dialogResult == DialogResult.Yes)
+                            DialogResult dialogResult = MessageBox.Show("There's an exisiting data, will update the quantity instead", "Update Quantity", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.OK)
                             {
                                 // Update the quantity in the Borrower table
                                 using (SqlCommand updateCommand = new SqlCommand("UPDATE Borrower SET quantity = quantity + @quantity WHERE booksid = @booksid AND studentid = @studentid", con))
@@ -103,6 +103,7 @@ namespace LoginRegister
                                     updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
                                     updateCommand.Parameters.AddWithValue("@studentid", studentId);
                                     updateCommand.ExecuteNonQuery();
+                                    loadDatagrid();
                                 }
 
                                 //update the return date in the Borrower table
@@ -112,21 +113,22 @@ namespace LoginRegister
                                     updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
                                     updateCommand.Parameters.AddWithValue("@studentid", studentId);
                                     updateCommand.ExecuteNonQuery();
+                                    loadDatagrid();
                                 }
 
                                 //update dbo.BookData for the quantity
-                                using (SqlCommand updateCommand = new SqlCommand("UPDATE dbo.BookData SET quantity = @quantity WHERE booksid = @booksid", con))
+                                using (SqlCommand updateCommand = new SqlCommand("UPDATE dbo.BookData SET quantity = CASE WHEN quantity > 0 THEN quantity - 1 ELSE quantity END WHERE booksid = @booksid", con))
                                 {
-                                    updateCommand.Parameters.AddWithValue("@borrowedQuantity", quantitytxt.Text);
+                                    updateCommand.Parameters.AddWithValue("@borrowedQuantity", quantity);
                                     updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
-                                    updateCommand.Parameters.AddWithValue("@quantity", quantitytxt.Text);
                                     updateCommand.ExecuteNonQuery();
+                                    loadDatagrid();
                                 }
                             }
                             else
                             {
+
                                 
-                                return;
                             }
                         }
                         else
@@ -145,6 +147,13 @@ namespace LoginRegister
                                 insertCommand.Parameters.AddWithValue("@returnby", DateTime.UtcNow.AddDays(7)); // Use UTC time
 
                                 insertCommand.ExecuteNonQuery();
+                            }
+                            using (SqlCommand updateCommand = new SqlCommand("UPDATE dbo.BookData SET quantity = CASE WHEN quantity > 0 THEN quantity - 1 ELSE quantity END WHERE booksid = @booksid", con))
+                            {
+                                updateCommand.Parameters.AddWithValue("@borrowedQuantity", quantity);
+                                updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
+                                updateCommand.ExecuteNonQuery();
+                                loadDatagrid();
                             }
                         }
                     }

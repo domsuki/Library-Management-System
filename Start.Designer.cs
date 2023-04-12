@@ -122,10 +122,10 @@
             this.forgotPassLink.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.forgotPassLink.Location = new System.Drawing.Point(439, 485);
             this.forgotPassLink.Name = "forgotPassLink";
-            this.forgotPassLink.Size = new System.Drawing.Size(146, 25);
+            this.forgotPassLink.Size = new System.Drawing.Size(152, 25);
             this.forgotPassLink.TabIndex = 20;
             this.forgotPassLink.TabStop = true;
-            this.forgotPassLink.Text = "Forgot Password";
+            this.forgotPassLink.Text = "Change Password";
             this.forgotPassLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.forgotPassLink_LinkClicked);
             // 
             // label5
