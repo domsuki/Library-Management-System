@@ -8,7 +8,7 @@ namespace LoginRegister
 {
     public partial class Books : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True");
 
         public Books()
         {
@@ -17,11 +17,8 @@ namespace LoginRegister
 
         private void Books_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'booksDataSet.BookData' table. You can move, or remove it, as needed.
-            this.bookDataTableAdapter.Fill(this.booksDataSet.BookData);
-            // TODO: This line of code loads data into the 'masterDataSet1.Books' table. You can move, or remove it, as needed.
-            //this.booksTableAdapter.Fill(this.masterDataSet1.Books);
-
+            // TODO: This line of code loads data into the 'bookDataDB.BookData' table. You can move, or remove it, as needed.
+            this.bookDataTableAdapter1.Fill(this.bookDataDB.BookData);
         }
 
         private void addbtn_Click(object sender, EventArgs e)
@@ -32,7 +29,7 @@ namespace LoginRegister
                 return;
             }
 
-            string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
@@ -59,7 +56,7 @@ namespace LoginRegister
                 return;
             }
 
-            string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
@@ -89,7 +86,7 @@ namespace LoginRegister
 
         private void deletebtn_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
@@ -155,7 +152,7 @@ namespace LoginRegister
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
             string searchText = SearchBox.Text;
             string query = "SELECT title, booksid, author, quantity FROM BookData WHERE title LIKE '%' + @searchText + '%' OR author LIKE '%' + @searchText + '%' OR booksid LIKE '%' + @searchText + '%'";
             using (SqlConnection con = new SqlConnection(connectionString))

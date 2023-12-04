@@ -17,7 +17,7 @@ namespace LoginRegister
         public Form1()
         {
             InitializeComponent();
-            cn = new SqlConnection(@"Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True");
+            cn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=""C:\Users\d0msk\Source\Repos\Library Management-System\Database.mdf"";Integrated Security=True");
         }
         private void btnLogin_Click(object sender, EventArgs e)
         {

@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -71,6 +71,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bookDataDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bookDataDB.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Books.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +199,11 @@
     <Compile Include="Start.Designer.cs">
       <DependentUpon>Start.cs</DependentUpon>
     </Compile>
+    <Compile Include="studentlogDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>studentlogDS.xsd</DependentUpon>
+    </Compile>
     <Compile Include="TheNewBorrowDataGrid.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -239,6 +249,17 @@
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bookDataDB.xsc">
+      <DependentUpon>bookDataDB.xsd</DependentUpon>
+    </None>
+    <None Include="bookDataDB.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bookDataDB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bookDataDB.xss">
+      <DependentUpon>bookDataDB.xsd</DependentUpon>
+    </None>
     <None Include="BooksBorrowerData.xsc">
       <DependentUpon>BooksBorrowerData.xsd</DependentUpon>
     </None>
@@ -380,6 +401,17 @@
     <None Include="studentlog.xss">
       <DependentUpon>studentlog.xsd</DependentUpon>
     </None>
+    <None Include="studentlogDS.xsc">
+      <DependentUpon>studentlogDS.xsd</DependentUpon>
+    </None>
+    <None Include="studentlogDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>studentlogDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="studentlogDS.xss">
+      <DependentUpon>studentlogDS.xsd</DependentUpon>
+    </None>
     <None Include="TheNewBorrowDataGrid.xsc">
       <DependentUpon>TheNewBorrowDataGrid.xsd</DependentUpon>
     </None>
@@ -433,6 +465,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\326914.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

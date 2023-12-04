@@ -16,8 +16,8 @@ namespace LoginRegister
 
         private void StudentLog_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'masterDataSet4.studentlog' table. You can move, or remove it, as needed.
-            this.studentlogTableAdapter.Fill(this.masterDataSet4.studentlog);
+            // TODO: This line of code loads data into the 'studentlogDS.studentlog' table. You can move, or remove it, as needed.
+            this.studentlogTableAdapter1.Fill(this.studentlogDS.studentlog);
 
         }
 
@@ -38,7 +38,7 @@ namespace LoginRegister
 
         private void ReloadDataGridView()
         {
-            string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
             string query = "SELECT studentid, firstname, lastname FROM studentlog";
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -53,7 +53,7 @@ namespace LoginRegister
         }
         private void addstudentbtn_Click(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -98,7 +98,7 @@ namespace LoginRegister
             string studentId = studentidtxt.Text;
 
             // Set up the database connection string
-            string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
 
             // Open a connection to the database
             using (SqlConnection con = new SqlConnection(connectionString))
