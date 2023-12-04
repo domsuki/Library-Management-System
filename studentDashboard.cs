@@ -15,6 +15,7 @@ namespace LoginRegister
         public studentDashboard()
         {
             InitializeComponent();
+            label3.Text = "You are logging in as: " + Form1.loggedInUser;
         }
 
         private void logoutbtn_Click(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace LoginRegister
 
         private void label3_Click(object sender, EventArgs e)
         {
-            label3.Text = "You are logging in as: " + Form1.loggedInUser;
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

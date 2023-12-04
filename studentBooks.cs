@@ -20,8 +20,9 @@ namespace LoginRegister
 
         private void studentBooks_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'booksDataSet.BookData' table. You can move, or remove it, as needed.
-            this.bookDataTableAdapter.Fill(this.booksDataSet.BookData);
+            // TODO: This line of code loads data into the 'bookDataDB.BookData' table. You can move, or remove it, as needed.
+            this.bookDataTableAdapter1.Fill(this.bookDataDB.BookData);
+            
 
         }
 

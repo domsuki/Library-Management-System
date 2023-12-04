@@ -112,6 +112,19 @@
             this.bookSearch = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.borrowedSearch = new System.Windows.Forms.TextBox();
+            this.borrowerDB = new LoginRegister.BorrowerDB();
+            this.borrowerBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.borrowerTableAdapter3 = new LoginRegister.BorrowerDBTableAdapters.BorrowerTableAdapter();
+            this.borrowerBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.returnedDB = new LoginRegister.ReturnedDB();
+            this.returnedBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.returnedTableAdapter2 = new LoginRegister.ReturnedDBTableAdapters.ReturnedTableAdapter();
+            this.returnedBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.bookDataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bookDataDB = new LoginRegister.bookDataDB();
+            this.bookDataBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.bookDataTableAdapter1 = new LoginRegister.bookDataDBTableAdapters.BookDataTableAdapter();
+            this.borrowerBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet2)).BeginInit();
@@ -133,6 +146,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.theNewBorrowDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnedDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource5)).BeginInit();
             this.SuspendLayout();
             // 
             // deletebtn
@@ -311,7 +334,7 @@
             this.titleDataGridViewTextBoxColumn1,
             this.authorDataGridViewTextBoxColumn1,
             this.quantityDataGridViewTextBoxColumn1});
-            this.dataGridView1.DataSource = this.bookDataBindingSource;
+            this.dataGridView1.DataSource = this.bookDataBindingSource2;
             this.dataGridView1.Location = new System.Drawing.Point(772, 519);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -561,7 +584,7 @@
             this.authorDataGridViewTextBoxColumn2,
             this.quantityDataGridViewTextBoxColumn2,
             this.returneddateDataGridViewTextBoxColumn});
-            this.dataGridView3.DataSource = this.returnedBindingSource1;
+            this.dataGridView3.DataSource = this.returnedBindingSource3;
             this.dataGridView3.Location = new System.Drawing.Point(1061, 190);
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
@@ -717,7 +740,7 @@
             this.quantityDataGridViewTextBoxColumn,
             this.borroweddateDataGridViewTextBoxColumn,
             this.returnbyDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.borrowerBindingSource2;
+            this.dataGridView2.DataSource = this.borrowerBindingSource5;
             this.dataGridView2.Location = new System.Drawing.Point(574, 190);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
@@ -884,6 +907,68 @@
             this.borrowedSearch.TabIndex = 38;
             this.borrowedSearch.TextChanged += new System.EventHandler(this.borrowedSearch_TextChanged);
             // 
+            // borrowerDB
+            // 
+            this.borrowerDB.DataSetName = "BorrowerDB";
+            this.borrowerDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // borrowerBindingSource3
+            // 
+            this.borrowerBindingSource3.DataMember = "Borrower";
+            this.borrowerBindingSource3.DataSource = this.borrowerDB;
+            // 
+            // borrowerTableAdapter3
+            // 
+            this.borrowerTableAdapter3.ClearBeforeFill = true;
+            // 
+            // borrowerBindingSource4
+            // 
+            this.borrowerBindingSource4.DataMember = "Borrower";
+            this.borrowerBindingSource4.DataSource = this.borrowerDB;
+            // 
+            // returnedDB
+            // 
+            this.returnedDB.DataSetName = "ReturnedDB";
+            this.returnedDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // returnedBindingSource2
+            // 
+            this.returnedBindingSource2.DataMember = "Returned";
+            this.returnedBindingSource2.DataSource = this.returnedDB;
+            // 
+            // returnedTableAdapter2
+            // 
+            this.returnedTableAdapter2.ClearBeforeFill = true;
+            // 
+            // returnedBindingSource3
+            // 
+            this.returnedBindingSource3.DataMember = "Returned";
+            this.returnedBindingSource3.DataSource = this.returnedDB;
+            // 
+            // bookDataBindingSource1
+            // 
+            this.bookDataBindingSource1.DataMember = "BookData";
+            this.bookDataBindingSource1.DataSource = this.booksDataSet;
+            // 
+            // bookDataDB
+            // 
+            this.bookDataDB.DataSetName = "bookDataDB";
+            this.bookDataDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bookDataBindingSource2
+            // 
+            this.bookDataBindingSource2.DataMember = "BookData";
+            this.bookDataBindingSource2.DataSource = this.bookDataDB;
+            // 
+            // bookDataTableAdapter1
+            // 
+            this.bookDataTableAdapter1.ClearBeforeFill = true;
+            // 
+            // borrowerBindingSource5
+            // 
+            this.borrowerBindingSource5.DataMember = "Borrower";
+            this.borrowerBindingSource5.DataSource = this.borrowerDB;
+            // 
             // Borrower
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -946,6 +1031,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.theNewBorrowDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnedDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1036,5 +1131,18 @@
         private System.Windows.Forms.TextBox bookSearch;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox borrowedSearch;
+        private BorrowerDB borrowerDB;
+        private System.Windows.Forms.BindingSource borrowerBindingSource3;
+        private BorrowerDBTableAdapters.BorrowerTableAdapter borrowerTableAdapter3;
+        private System.Windows.Forms.BindingSource borrowerBindingSource4;
+        private ReturnedDB returnedDB;
+        private System.Windows.Forms.BindingSource returnedBindingSource2;
+        private ReturnedDBTableAdapters.ReturnedTableAdapter returnedTableAdapter2;
+        private System.Windows.Forms.BindingSource bookDataBindingSource1;
+        private System.Windows.Forms.BindingSource returnedBindingSource3;
+        private bookDataDB bookDataDB;
+        private System.Windows.Forms.BindingSource bookDataBindingSource2;
+        private bookDataDBTableAdapters.BookDataTableAdapter bookDataTableAdapter1;
+        private System.Windows.Forms.BindingSource borrowerBindingSource5;
     }
 }

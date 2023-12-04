@@ -41,10 +41,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bookDataTableAdapter = new LoginRegister.BooksDataSetTableAdapters.BookDataTableAdapter();
+            this.bookDataDB = new LoginRegister.bookDataDB();
+            this.bookDataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bookDataTableAdapter1 = new LoginRegister.bookDataDBTableAdapters.BookDataTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataDB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchBox
@@ -66,7 +71,7 @@
             this.authorDataGridViewTextBoxColumn,
             this.booksidDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.bookDataBindingSource;
+            this.dataGridView1.DataSource = this.bookDataBindingSource1;
             this.dataGridView1.Location = new System.Drawing.Point(165, 194);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -156,6 +161,20 @@
             // 
             this.bookDataTableAdapter.ClearBeforeFill = true;
             // 
+            // bookDataDB
+            // 
+            this.bookDataDB.DataSetName = "bookDataDB";
+            this.bookDataDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bookDataBindingSource1
+            // 
+            this.bookDataBindingSource1.DataMember = "BookData";
+            this.bookDataBindingSource1.DataSource = this.bookDataDB;
+            // 
+            // bookDataTableAdapter1
+            // 
+            this.bookDataTableAdapter1.ClearBeforeFill = true;
+            // 
             // studentBooks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -176,6 +195,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataDB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,5 +216,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn booksidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private bookDataDB bookDataDB;
+        private System.Windows.Forms.BindingSource bookDataBindingSource1;
+        private bookDataDBTableAdapters.BookDataTableAdapter bookDataTableAdapter1;
     }
 }

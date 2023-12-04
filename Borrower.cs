@@ -294,24 +294,12 @@ namespace LoginRegister
 
         private void Borrower_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'theNewBorrowDataGrid.Borrower' table. You can move, or remove it, as needed.
-            this.borrowerTableAdapter2.Fill(this.theNewBorrowDataGrid.Borrower);
-            // TODO: This line of code loads data into the 'newReturnedDataSet.Returned' table. You can move, or remove it, as needed.
-            this.returnedTableAdapter1.Fill(this.newReturnedDataSet.Returned);
-            //TODO: This line of code loads data into the 'newBorrowDataSet.Borrower' table. You can move, or remove it, as needed.
-            this.borrowerTableAdapter1.Fill(this.newBorrowDataSet.Borrower);
-            // TODO: This line of code loads data into the 'booksDataSet.BookData' table. You can move, or remove it, as needed.
-            this.bookDataTableAdapter.Fill(this.booksDataSet.BookData);
-            // TODO: This line of code loads data into the 'returneddataset.Returned' table. You can move, or remove it, as needed.
-            this.returnedTableAdapter.Fill(this.returneddataset.Returned);
-
-
-            //read studentlog
-            this.studentlogTableAdapter.Fill(this.masterDataSet5.studentlog);
-
-            // TODO: This line of code loads data into the 'masterDataSet2.Borrower' table. You can move, or remove it, as needed.
-            this.borrowerTableAdapter.Fill(this.masterDataSet2.Borrower);
-
+            // TODO: This line of code loads data into the 'bookDataDB.BookData' table. You can move, or remove it, as needed.
+            this.bookDataTableAdapter1.Fill(this.bookDataDB.BookData);
+            // TODO: This line of code loads data into the 'returnedDB.Returned' table. You can move, or remove it, as needed.
+            this.returnedTableAdapter2.Fill(this.returnedDB.Returned);
+            // TODO: This line of code loads data into the 'borrowerDB.Borrower' table. You can move, or remove it, as needed.
+            this.borrowerTableAdapter3.Fill(this.borrowerDB.Borrower);
 
         }
 
