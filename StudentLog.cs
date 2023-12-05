@@ -12,13 +12,41 @@ namespace LoginRegister
         public StudentLog()
         {
             InitializeComponent();
+            StudentDataGrid.CellClick += dataGridView1_CellContentClick;
+
         }
 
         private void StudentLog_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'studentlogDS.studentlog' table. You can move, or remove it, as needed.
-            this.studentlogTableAdapter1.Fill(this.studentlogDS.studentlog);
+            RefreshTable();
 
+        }
+
+        private void RefreshTable()
+        {
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    DataSet dataSet = new DataSet(); ;
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+
+                    string q = "SELECT * FROM studentlog";
+                    using (SqlCommand CMD = new SqlCommand(q, con))
+                    {
+                        adapter.SelectCommand = CMD;
+
+                        adapter.Fill(dataSet, "studentlog");
+                        StudentDataGrid.DataSource = dataSet.Tables["studentlog"];
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error " + ex.Message);
+                }
+            }
         }
 
         private void studentidtxt_TextChanged(object sender, EventArgs e)
@@ -36,21 +64,7 @@ namespace LoginRegister
 
         }
 
-        private void ReloadDataGridView()
-        {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
-            string query = "SELECT studentid, firstname, lastname FROM studentlog";
-
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                using (SqlDataAdapter adapter = new SqlDataAdapter(query, con))
-                {
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-                    dataGridView1.DataSource = dt;
-                }
-            }
-        }
+       
         private void addstudentbtn_Click(object sender, EventArgs e)
         {
             string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
@@ -82,7 +96,7 @@ namespace LoginRegister
                             MessageBox.Show("Successfully added!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             // Reload the data in the DataGridView
-                            ReloadDataGridView();
+                            RefreshTable();
                         }
                     }
                 }
@@ -132,7 +146,7 @@ namespace LoginRegister
                     MessageBox.Show("Student deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     // Call a method to reload the data in the DataGridView, if necessary.
-                    ReloadDataGridView();
+                    RefreshTable();
 
 
                 }
@@ -140,6 +154,23 @@ namespace LoginRegister
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < StudentDataGrid.Rows.Count)
+            {
+                DataGridViewRow row = StudentDataGrid.Rows[e.RowIndex];
+
+                string StudentID = row.Cells["studentid"].Value.ToString();
+                string FirstName = row.Cells["firstname"].Value.ToString();
+                string LastName = row.Cells["lastname"].Value.ToString();
+
+                // Set the values to the textboxes
+                studentidtxt.Text = StudentID;
+                firstnametxt.Text = FirstName;
+                lastnametxt.Text = LastName;
             }
         }
     }

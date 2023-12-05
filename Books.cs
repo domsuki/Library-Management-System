@@ -14,11 +14,36 @@ namespace LoginRegister
         {
             InitializeComponent();
         }
-
         private void Books_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'bookDataDB.BookData' table. You can move, or remove it, as needed.
-            this.bookDataTableAdapter1.Fill(this.bookDataDB.BookData);
+            RefreshTable();
+        }
+
+        private void RefreshTable()
+        {
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    con.Open();
+                    DataSet dataSet = new DataSet(); ;
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+
+                    string q = "SELECT * FROM BookData";
+                    using (SqlCommand CMD = new SqlCommand(q, con))
+                    {
+                        adapter.SelectCommand = CMD;
+
+                        adapter.Fill(dataSet, "BookData");
+                        BookDataGrid.DataSource = dataSet.Tables["BookData"];
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error " + ex.Message);
+                }
+            }
         }
 
         private void addbtn_Click(object sender, EventArgs e)
@@ -44,7 +69,7 @@ namespace LoginRegister
                     MessageBox.Show("Book has successfully added!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 con.Close();
-                loadDatagrid();
+                RefreshTable();
             }
         }
 
@@ -79,7 +104,7 @@ namespace LoginRegister
                     }
                 }
                 con.Close();
-                loadDatagrid();
+                RefreshTable();
             }
         }
 
@@ -91,10 +116,10 @@ namespace LoginRegister
             {
                 con.Open();
                 // Check if a row is selected
-                if (dataGridView1.SelectedRows.Count > 0)
+                if (BookDataGrid.SelectedRows.Count > 0)
                 {
                     // Get the ID of the selected row
-                    string selectedId = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                    string selectedId = BookDataGrid.SelectedRows[0].Cells[0].Value.ToString();
 
                     // Display a confirmation message box
                     DialogResult dialogResult = MessageBox.Show("Are you sure you want to delete this?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -125,24 +150,27 @@ namespace LoginRegister
                     MessageBox.Show("Please select a row to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 con.Close();
-                loadDatagrid();
+                RefreshTable();
             }
-        }
-
-        private void loadDatagrid()
-        {
-            //this.booksTableAdapter.Fill(this.masterDataSet1.Books);
-            this.bookDataTableAdapter.Fill(this.booksDataSet.BookData);
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0 && e.RowIndex < BookDataGrid.Rows.Count)
+            {
+                DataGridViewRow row = BookDataGrid.Rows[e.RowIndex];
 
+                string txtTitle = row.Cells["title"].Value.ToString();
+                string txtID = row.Cells["booksid"].Value.ToString();
+                string txtAuthor = row.Cells["author"].Value.ToString();
+                string txtQuantity = row.Cells["quantity"].Value.ToString();
+
+                // Set the values to the textboxes
+                txttitle.Text = txtTitle;
+                txtid.Text = txtID;
+                txtauthor.Text = txtAuthor;
+                txtquantity.Text = txtQuantity;
+            }
         }
 
         private void txtid_TextChanged(object sender, EventArgs e)
@@ -164,7 +192,7 @@ namespace LoginRegister
                     SqlDataReader reader = cmd.ExecuteReader();
                     DataTable dataTable = new DataTable();
                     dataTable.Load(reader);
-                    dataGridView1.DataSource = dataTable;
+                    BookDataGrid.DataSource = dataTable;
                     con.Close();
                 }
             }

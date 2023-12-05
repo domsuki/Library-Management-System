@@ -77,6 +77,36 @@
     <Compile Include="Author.Designer.cs">
       <DependentUpon>Author.cs</DependentUpon>
     </Compile>
+    <Compile Include="Author2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Author2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthorDatabase.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthorDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="authordbset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>authordbset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthorDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AuthorTB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthorTB.xsd</DependentUpon>
+    </Compile>
     <Compile Include="bookDataDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -215,6 +245,11 @@
     <Compile Include="Start.Designer.cs">
       <DependentUpon>Start.cs</DependentUpon>
     </Compile>
+    <Compile Include="studentlogdataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>studentlogdataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="studentlogDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -225,6 +260,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TheNewBorrowDataGrid.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Author.resx">
+      <DependentUpon>Author.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Books.resx">
       <DependentUpon>Books.cs</DependentUpon>
     </EmbeddedResource>
@@ -265,6 +303,72 @@
     <EmbeddedResource Include="Start.resx">
       <DependentUpon>Start.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Author2.xsc">
+      <DependentUpon>Author2.xsd</DependentUpon>
+    </None>
+    <None Include="Author2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Author2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Author2.xss">
+      <DependentUpon>Author2.xsd</DependentUpon>
+    </None>
+    <None Include="AuthorDatabase.xsc">
+      <DependentUpon>AuthorDatabase.xsd</DependentUpon>
+    </None>
+    <None Include="AuthorDatabase.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AuthorDatabase.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AuthorDatabase.xss">
+      <DependentUpon>AuthorDatabase.xsd</DependentUpon>
+    </None>
+    <None Include="AuthorDataSet.xsc">
+      <DependentUpon>AuthorDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AuthorDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AuthorDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AuthorDataSet.xss">
+      <DependentUpon>AuthorDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="authordbset.xsc">
+      <DependentUpon>authordbset.xsd</DependentUpon>
+    </None>
+    <None Include="authordbset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>authordbset.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="authordbset.xss">
+      <DependentUpon>authordbset.xsd</DependentUpon>
+    </None>
+    <None Include="AuthorDS.xsc">
+      <DependentUpon>AuthorDS.xsd</DependentUpon>
+    </None>
+    <None Include="AuthorDS.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AuthorDS.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AuthorDS.xss">
+      <DependentUpon>AuthorDS.xsd</DependentUpon>
+    </None>
+    <None Include="AuthorTB.xsc">
+      <DependentUpon>AuthorTB.xsd</DependentUpon>
+    </None>
+    <None Include="AuthorTB.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AuthorTB.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="AuthorTB.xss">
+      <DependentUpon>AuthorTB.xsd</DependentUpon>
+    </None>
     <None Include="bookDataDB.xsc">
       <DependentUpon>bookDataDB.xsd</DependentUpon>
     </None>
@@ -439,6 +543,17 @@
     <None Include="studentlog.xss">
       <DependentUpon>studentlog.xsd</DependentUpon>
     </None>
+    <None Include="studentlogdataset.xsc">
+      <DependentUpon>studentlogdataset.xsd</DependentUpon>
+    </None>
+    <None Include="studentlogdataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>studentlogdataset.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="studentlogdataset.xss">
+      <DependentUpon>studentlogdataset.xsd</DependentUpon>
+    </None>
     <None Include="studentlogDS.xsc">
       <DependentUpon>studentlogDS.xsd</DependentUpon>
     </None>
@@ -512,6 +627,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\download.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

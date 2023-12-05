@@ -45,11 +45,8 @@
             this.masterDataSet2 = new LoginRegister.masterDataSet2();
             this.borrowerTableAdapter = new LoginRegister.masterDataSet2TableAdapters.BorrowerTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.booksidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.authorDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bookDataBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.bookDataDB = new LoginRegister.bookDataDB();
             this.bookDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.booksDataSet = new LoginRegister.BooksDataSet();
             this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -71,15 +68,8 @@
             this.studentlogTableAdapter = new LoginRegister.masterDataSet5TableAdapters.studentlogTableAdapter();
             this.label13 = new System.Windows.Forms.Label();
             this.printbtn = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.studentidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastnameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.booksidDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.authorDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.returneddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.returnedBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.returnedDB = new LoginRegister.ReturnedDB();
             this.returnedBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.newReturnedDataSet = new LoginRegister.newReturnedDataSet();
             this.returnedBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -92,16 +82,8 @@
             this.borrowerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.borrowerTableAdapter1 = new LoginRegister.NewBorrowDataSetTableAdapters.BorrowerTableAdapter();
             this.returnedTableAdapter1 = new LoginRegister.newReturnedDataSetTableAdapters.ReturnedTableAdapter();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.studentidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.booksidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.authorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.borroweddateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.returnbyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.borrowerBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
+            this.borrowerDB = new LoginRegister.BorrowerDB();
             this.borrowerBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.theNewBorrowDataGrid = new LoginRegister.TheNewBorrowDataGrid();
             this.borrowerTableAdapter2 = new LoginRegister.TheNewBorrowDataGridTableAdapters.BorrowerTableAdapter();
@@ -112,23 +94,21 @@
             this.bookSearch = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.borrowedSearch = new System.Windows.Forms.TextBox();
-            this.borrowerDB = new LoginRegister.BorrowerDB();
             this.borrowerBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.borrowerTableAdapter3 = new LoginRegister.BorrowerDBTableAdapters.BorrowerTableAdapter();
             this.borrowerBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.returnedDB = new LoginRegister.ReturnedDB();
             this.returnedBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.returnedTableAdapter2 = new LoginRegister.ReturnedDBTableAdapters.ReturnedTableAdapter();
-            this.returnedBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
             this.bookDataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.bookDataDB = new LoginRegister.bookDataDB();
-            this.bookDataBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.bookDataTableAdapter1 = new LoginRegister.bookDataDBTableAdapters.BookDataTableAdapter();
-            this.borrowerBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
+            this.borroweddatagrid = new System.Windows.Forms.DataGridView();
+            this.returneddatagrid = new System.Windows.Forms.DataGridView();
+            this.availablebook = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
@@ -136,26 +116,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentlogBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnedDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newReturnedDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returneddataset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newBorrowDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.theNewBorrowDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedDB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataDB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borroweddatagrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returneddatagrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.availablebook)).BeginInit();
             this.SuspendLayout();
             // 
             // deletebtn
@@ -325,54 +304,15 @@
             this.label1.TabIndex = 26;
             this.label1.Text = "Student Transaction Page";
             // 
-            // dataGridView1
+            // bookDataBindingSource2
             // 
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.booksidDataGridViewTextBoxColumn1,
-            this.titleDataGridViewTextBoxColumn1,
-            this.authorDataGridViewTextBoxColumn1,
-            this.quantityDataGridViewTextBoxColumn1});
-            this.dataGridView1.DataSource = this.bookDataBindingSource2;
-            this.dataGridView1.Location = new System.Drawing.Point(772, 519);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(554, 183);
-            this.dataGridView1.TabIndex = 24;
+            this.bookDataBindingSource2.DataMember = "BookData";
+            this.bookDataBindingSource2.DataSource = this.bookDataDB;
             // 
-            // booksidDataGridViewTextBoxColumn1
+            // bookDataDB
             // 
-            this.booksidDataGridViewTextBoxColumn1.DataPropertyName = "booksid";
-            this.booksidDataGridViewTextBoxColumn1.HeaderText = "booksid";
-            this.booksidDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.booksidDataGridViewTextBoxColumn1.Name = "booksidDataGridViewTextBoxColumn1";
-            this.booksidDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // titleDataGridViewTextBoxColumn1
-            // 
-            this.titleDataGridViewTextBoxColumn1.DataPropertyName = "title";
-            this.titleDataGridViewTextBoxColumn1.HeaderText = "title";
-            this.titleDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.titleDataGridViewTextBoxColumn1.Name = "titleDataGridViewTextBoxColumn1";
-            this.titleDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // authorDataGridViewTextBoxColumn1
-            // 
-            this.authorDataGridViewTextBoxColumn1.DataPropertyName = "author";
-            this.authorDataGridViewTextBoxColumn1.HeaderText = "author";
-            this.authorDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.authorDataGridViewTextBoxColumn1.Name = "authorDataGridViewTextBoxColumn1";
-            this.authorDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // quantityDataGridViewTextBoxColumn1
-            // 
-            this.quantityDataGridViewTextBoxColumn1.DataPropertyName = "quantity";
-            this.quantityDataGridViewTextBoxColumn1.HeaderText = "quantity";
-            this.quantityDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.quantityDataGridViewTextBoxColumn1.Name = "quantityDataGridViewTextBoxColumn1";
-            this.quantityDataGridViewTextBoxColumn1.Width = 125;
+            this.bookDataDB.DataSetName = "bookDataDB";
+            this.bookDataDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // bookDataBindingSource
             // 
@@ -571,90 +511,15 @@
             this.printbtn.UseVisualStyleBackColor = false;
             this.printbtn.Click += new System.EventHandler(this.printbtn_Click);
             // 
-            // dataGridView3
+            // returnedBindingSource3
             // 
-            this.dataGridView3.AutoGenerateColumns = false;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.studentidDataGridViewTextBoxColumn1,
-            this.firstnameDataGridViewTextBoxColumn1,
-            this.lastnameDataGridViewTextBoxColumn1,
-            this.booksidDataGridViewTextBoxColumn2,
-            this.titleDataGridViewTextBoxColumn2,
-            this.authorDataGridViewTextBoxColumn2,
-            this.quantityDataGridViewTextBoxColumn2,
-            this.returneddateDataGridViewTextBoxColumn});
-            this.dataGridView3.DataSource = this.returnedBindingSource3;
-            this.dataGridView3.Location = new System.Drawing.Point(1061, 190);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidth = 51;
-            this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(460, 191);
-            this.dataGridView3.TabIndex = 32;
+            this.returnedBindingSource3.DataMember = "Returned";
+            this.returnedBindingSource3.DataSource = this.returnedDB;
             // 
-            // studentidDataGridViewTextBoxColumn1
+            // returnedDB
             // 
-            this.studentidDataGridViewTextBoxColumn1.DataPropertyName = "studentid";
-            this.studentidDataGridViewTextBoxColumn1.HeaderText = "studentid";
-            this.studentidDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.studentidDataGridViewTextBoxColumn1.Name = "studentidDataGridViewTextBoxColumn1";
-            this.studentidDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // firstnameDataGridViewTextBoxColumn1
-            // 
-            this.firstnameDataGridViewTextBoxColumn1.DataPropertyName = "firstname";
-            this.firstnameDataGridViewTextBoxColumn1.HeaderText = "firstname";
-            this.firstnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.firstnameDataGridViewTextBoxColumn1.Name = "firstnameDataGridViewTextBoxColumn1";
-            this.firstnameDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // lastnameDataGridViewTextBoxColumn1
-            // 
-            this.lastnameDataGridViewTextBoxColumn1.DataPropertyName = "lastname";
-            this.lastnameDataGridViewTextBoxColumn1.HeaderText = "lastname";
-            this.lastnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.lastnameDataGridViewTextBoxColumn1.Name = "lastnameDataGridViewTextBoxColumn1";
-            this.lastnameDataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // booksidDataGridViewTextBoxColumn2
-            // 
-            this.booksidDataGridViewTextBoxColumn2.DataPropertyName = "booksid";
-            this.booksidDataGridViewTextBoxColumn2.HeaderText = "booksid";
-            this.booksidDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.booksidDataGridViewTextBoxColumn2.Name = "booksidDataGridViewTextBoxColumn2";
-            this.booksidDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // titleDataGridViewTextBoxColumn2
-            // 
-            this.titleDataGridViewTextBoxColumn2.DataPropertyName = "title";
-            this.titleDataGridViewTextBoxColumn2.HeaderText = "title";
-            this.titleDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.titleDataGridViewTextBoxColumn2.Name = "titleDataGridViewTextBoxColumn2";
-            this.titleDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // authorDataGridViewTextBoxColumn2
-            // 
-            this.authorDataGridViewTextBoxColumn2.DataPropertyName = "author";
-            this.authorDataGridViewTextBoxColumn2.HeaderText = "author";
-            this.authorDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.authorDataGridViewTextBoxColumn2.Name = "authorDataGridViewTextBoxColumn2";
-            this.authorDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // quantityDataGridViewTextBoxColumn2
-            // 
-            this.quantityDataGridViewTextBoxColumn2.DataPropertyName = "quantity";
-            this.quantityDataGridViewTextBoxColumn2.HeaderText = "quantity";
-            this.quantityDataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.quantityDataGridViewTextBoxColumn2.Name = "quantityDataGridViewTextBoxColumn2";
-            this.quantityDataGridViewTextBoxColumn2.Width = 125;
-            // 
-            // returneddateDataGridViewTextBoxColumn
-            // 
-            this.returneddateDataGridViewTextBoxColumn.DataPropertyName = "returneddate";
-            this.returneddateDataGridViewTextBoxColumn.HeaderText = "returneddate";
-            this.returneddateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.returneddateDataGridViewTextBoxColumn.Name = "returneddateDataGridViewTextBoxColumn";
-            this.returneddateDataGridViewTextBoxColumn.Width = 125;
+            this.returnedDB.DataSetName = "ReturnedDB";
+            this.returnedDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // returnedBindingSource1
             // 
@@ -726,99 +591,15 @@
             // 
             this.returnedTableAdapter1.ClearBeforeFill = true;
             // 
-            // dataGridView2
+            // borrowerBindingSource5
             // 
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.studentidDataGridViewTextBoxColumn,
-            this.firstnameDataGridViewTextBoxColumn,
-            this.lastnameDataGridViewTextBoxColumn,
-            this.booksidDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn,
-            this.authorDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn,
-            this.borroweddateDataGridViewTextBoxColumn,
-            this.returnbyDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.borrowerBindingSource5;
-            this.dataGridView2.Location = new System.Drawing.Point(574, 190);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(467, 189);
-            this.dataGridView2.TabIndex = 33;
+            this.borrowerBindingSource5.DataMember = "Borrower";
+            this.borrowerBindingSource5.DataSource = this.borrowerDB;
             // 
-            // studentidDataGridViewTextBoxColumn
+            // borrowerDB
             // 
-            this.studentidDataGridViewTextBoxColumn.DataPropertyName = "studentid";
-            this.studentidDataGridViewTextBoxColumn.HeaderText = "studentid";
-            this.studentidDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.studentidDataGridViewTextBoxColumn.Name = "studentidDataGridViewTextBoxColumn";
-            this.studentidDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // firstnameDataGridViewTextBoxColumn
-            // 
-            this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "firstname";
-            this.firstnameDataGridViewTextBoxColumn.HeaderText = "firstname";
-            this.firstnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
-            this.firstnameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // lastnameDataGridViewTextBoxColumn
-            // 
-            this.lastnameDataGridViewTextBoxColumn.DataPropertyName = "lastname";
-            this.lastnameDataGridViewTextBoxColumn.HeaderText = "lastname";
-            this.lastnameDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
-            this.lastnameDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // booksidDataGridViewTextBoxColumn
-            // 
-            this.booksidDataGridViewTextBoxColumn.DataPropertyName = "booksid";
-            this.booksidDataGridViewTextBoxColumn.HeaderText = "booksid";
-            this.booksidDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.booksidDataGridViewTextBoxColumn.Name = "booksidDataGridViewTextBoxColumn";
-            this.booksidDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "title";
-            this.titleDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // authorDataGridViewTextBoxColumn
-            // 
-            this.authorDataGridViewTextBoxColumn.DataPropertyName = "author";
-            this.authorDataGridViewTextBoxColumn.HeaderText = "author";
-            this.authorDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.authorDataGridViewTextBoxColumn.Name = "authorDataGridViewTextBoxColumn";
-            this.authorDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "quantity";
-            this.quantityDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
-            this.quantityDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // borroweddateDataGridViewTextBoxColumn
-            // 
-            this.borroweddateDataGridViewTextBoxColumn.DataPropertyName = "borroweddate";
-            this.borroweddateDataGridViewTextBoxColumn.HeaderText = "borroweddate";
-            this.borroweddateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.borroweddateDataGridViewTextBoxColumn.Name = "borroweddateDataGridViewTextBoxColumn";
-            this.borroweddateDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // returnbyDataGridViewTextBoxColumn
-            // 
-            this.returnbyDataGridViewTextBoxColumn.DataPropertyName = "returnby";
-            this.returnbyDataGridViewTextBoxColumn.HeaderText = "returnby";
-            this.returnbyDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.returnbyDataGridViewTextBoxColumn.Name = "returnbyDataGridViewTextBoxColumn";
-            this.returnbyDataGridViewTextBoxColumn.Width = 125;
+            this.borrowerDB.DataSetName = "BorrowerDB";
+            this.borrowerDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // borrowerBindingSource2
             // 
@@ -907,11 +688,6 @@
             this.borrowedSearch.TabIndex = 38;
             this.borrowedSearch.TextChanged += new System.EventHandler(this.borrowedSearch_TextChanged);
             // 
-            // borrowerDB
-            // 
-            this.borrowerDB.DataSetName = "BorrowerDB";
-            this.borrowerDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // borrowerBindingSource3
             // 
             this.borrowerBindingSource3.DataMember = "Borrower";
@@ -926,11 +702,6 @@
             this.borrowerBindingSource4.DataMember = "Borrower";
             this.borrowerBindingSource4.DataSource = this.borrowerDB;
             // 
-            // returnedDB
-            // 
-            this.returnedDB.DataSetName = "ReturnedDB";
-            this.returnedDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // returnedBindingSource2
             // 
             this.returnedBindingSource2.DataMember = "Returned";
@@ -940,34 +711,44 @@
             // 
             this.returnedTableAdapter2.ClearBeforeFill = true;
             // 
-            // returnedBindingSource3
-            // 
-            this.returnedBindingSource3.DataMember = "Returned";
-            this.returnedBindingSource3.DataSource = this.returnedDB;
-            // 
             // bookDataBindingSource1
             // 
             this.bookDataBindingSource1.DataMember = "BookData";
             this.bookDataBindingSource1.DataSource = this.booksDataSet;
             // 
-            // bookDataDB
-            // 
-            this.bookDataDB.DataSetName = "bookDataDB";
-            this.bookDataDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bookDataBindingSource2
-            // 
-            this.bookDataBindingSource2.DataMember = "BookData";
-            this.bookDataBindingSource2.DataSource = this.bookDataDB;
-            // 
             // bookDataTableAdapter1
             // 
             this.bookDataTableAdapter1.ClearBeforeFill = true;
             // 
-            // borrowerBindingSource5
+            // borroweddatagrid
             // 
-            this.borrowerBindingSource5.DataMember = "Borrower";
-            this.borrowerBindingSource5.DataSource = this.borrowerDB;
+            this.borroweddatagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.borroweddatagrid.Location = new System.Drawing.Point(653, 196);
+            this.borroweddatagrid.Name = "borroweddatagrid";
+            this.borroweddatagrid.RowHeadersWidth = 51;
+            this.borroweddatagrid.RowTemplate.Height = 24;
+            this.borroweddatagrid.Size = new System.Drawing.Size(388, 166);
+            this.borroweddatagrid.TabIndex = 39;
+            // 
+            // returneddatagrid
+            // 
+            this.returneddatagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.returneddatagrid.Location = new System.Drawing.Point(1133, 196);
+            this.returneddatagrid.Name = "returneddatagrid";
+            this.returneddatagrid.RowHeadersWidth = 51;
+            this.returneddatagrid.RowTemplate.Height = 24;
+            this.returneddatagrid.Size = new System.Drawing.Size(388, 166);
+            this.returneddatagrid.TabIndex = 39;
+            // 
+            // availablebook
+            // 
+            this.availablebook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.availablebook.Location = new System.Drawing.Point(877, 529);
+            this.availablebook.Name = "availablebook";
+            this.availablebook.RowHeadersWidth = 51;
+            this.availablebook.RowTemplate.Height = 24;
+            this.availablebook.Size = new System.Drawing.Size(388, 166);
+            this.availablebook.TabIndex = 39;
             // 
             // Borrower
             // 
@@ -975,12 +756,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(1533, 734);
+            this.Controls.Add(this.availablebook);
+            this.Controls.Add(this.returneddatagrid);
+            this.Controls.Add(this.borroweddatagrid);
             this.Controls.Add(this.borrowedSearch);
             this.Controls.Add(this.returnedSearch);
             this.Controls.Add(this.bookSearch);
             this.Controls.Add(this.printReturnedbtn);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.printbtn);
             this.Controls.Add(this.studentidbox);
             this.Controls.Add(this.lastnameread);
@@ -990,7 +772,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.deletebtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label18);
@@ -1013,7 +794,8 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookDataDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
@@ -1021,26 +803,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentlogBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.masterDataSet5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returnedDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newReturnedDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.returneddataset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.newBorrowDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borrowerDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.theNewBorrowDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedDB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataDB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.borroweddatagrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.returneddatagrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.availablebook)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1065,14 +846,9 @@
         private masterDataSet2TableAdapters.BorrowerTableAdapter borrowerTableAdapter;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private BooksBorrowerData booksBorrowerData;
         private System.Windows.Forms.BindingSource booksBindingSource;
         private BooksBorrowerDataTableAdapters.BooksTableAdapter booksTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn booksidDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label searchBorrowed;
@@ -1088,18 +864,9 @@
         private masterDataSet5TableAdapters.studentlogTableAdapter studentlogTableAdapter;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button printbtn;
-        private System.Windows.Forms.DataGridView dataGridView3;
         private returneddataset returneddataset;
         private System.Windows.Forms.BindingSource returnedBindingSource;
         private returneddatasetTableAdapters.ReturnedTableAdapter returnedTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentidDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstnameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastnameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn booksidDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn returneddateDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private BooksDataSet booksDataSet;
@@ -1111,19 +878,9 @@
         private newReturnedDataSet newReturnedDataSet;
         private System.Windows.Forms.BindingSource returnedBindingSource1;
         private newReturnedDataSetTableAdapters.ReturnedTableAdapter returnedTableAdapter1;
-        private System.Windows.Forms.DataGridView dataGridView2;
         private TheNewBorrowDataGrid theNewBorrowDataGrid;
         private System.Windows.Forms.BindingSource borrowerBindingSource2;
         private TheNewBorrowDataGridTableAdapters.BorrowerTableAdapter borrowerTableAdapter2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn studentidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastnameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn booksidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn authorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn borroweddateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn returnbyDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button printReturnedbtn;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label11;
@@ -1144,5 +901,8 @@
         private System.Windows.Forms.BindingSource bookDataBindingSource2;
         private bookDataDBTableAdapters.BookDataTableAdapter bookDataTableAdapter1;
         private System.Windows.Forms.BindingSource borrowerBindingSource5;
+        private System.Windows.Forms.DataGridView borroweddatagrid;
+        private System.Windows.Forms.DataGridView returneddatagrid;
+        private System.Windows.Forms.DataGridView availablebook;
     }
 }

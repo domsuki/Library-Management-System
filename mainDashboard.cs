@@ -150,5 +150,17 @@ namespace LoginRegister
             ForgotPassword forgotpassword = new ForgotPassword();
             forgotpassword.ShowDialog();
         }
+
+        private void authorPicture_Click(object sender, EventArgs e)
+        {
+            Author author = new Author();
+            author.ShowDialog();
+        }
+
+        private void authortxt_Click(object sender, EventArgs e)
+        {
+            Author author = new Author();
+            author.ShowDialog();
+        }
     }
 }

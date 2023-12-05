@@ -19,7 +19,7 @@ namespace LoginRegister
 
         private void LoadBooks()
         {
-            string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -29,7 +29,7 @@ namespace LoginRegister
                     SqlDataAdapter adapter = new SqlDataAdapter(query, con);
                     DataTable table = new DataTable();
                     adapter.Fill(table);
-                    dataGridView1.DataSource = table;
+                    availablebook.DataSource = table;
                 }
                 catch (Exception ex)
                 {
@@ -44,7 +44,7 @@ namespace LoginRegister
             DataRowView selectedStudent = (DataRowView)studentidbox.SelectedItem;
             int studentId = Convert.ToInt32(selectedStudent["studentid"]);
 
-            string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -185,7 +185,7 @@ namespace LoginRegister
             DataRowView selectedStudent = (DataRowView)studentidbox.SelectedItem;
             int studentId = Convert.ToInt32(selectedStudent["studentid"]);
 
-            string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 try
@@ -382,7 +382,7 @@ namespace LoginRegister
         private void PrintPage(object sender, PrintPageEventArgs ev, Font font, int leftMargin, int topMargin, int column1Left, int column2Left, int column3Left, int column4Left, int column5Left, int column6Left, int column7Left, int column8Left, int rowHeight)
         {
             // Create a connection to the database
-            using (SqlConnection connection = new SqlConnection("Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;"))
+            using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True"))
             {
                 using (SqlCommand command = new SqlCommand("SELECT studentid, firstname, lastname, booksid, title, author, quantity, borroweddate, returnby FROM dbo.Borrower", connection))
                 {
@@ -485,7 +485,7 @@ namespace LoginRegister
         private void PrintPage(object sender, PrintPageEventArgs ev, Font font, int leftMargin, int topMargin)
         {
             // Create a connection to the database
-            using (SqlConnection connection = new SqlConnection("Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;"))
+            using (SqlConnection connection = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True;"))
             {
                 using (SqlCommand command = new SqlCommand("SELECT studentid AS 'Student ID', firstname AS 'First Name', lastname AS 'Last Name', booksid AS 'Book ID', title AS 'Title', quantity AS 'Quantity', returneddate AS 'Date Returned' FROM dbo.Returned", connection))
                 {
@@ -577,7 +577,7 @@ namespace LoginRegister
             y += 20;
 
             // Connect to the database and retrieve the data
-            string connectionString = "LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
             string query = "SELECT title, author, booksid, quantity FROM dbo.BookData";
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -618,7 +618,7 @@ namespace LoginRegister
                            "borroweddate LIKE '%' + @SearchQuery + '%' " + // added space after "borroweddate"
                            "OR returnby LIKE '%' + @SearchQuery + '%';";
 
-            using (SqlConnection conn = new SqlConnection("Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;"))
+            using (SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True"))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@SearchQuery", searchQuery);
@@ -629,7 +629,7 @@ namespace LoginRegister
                 adapter.Fill(dataTable);
 
                 // Reload the DataGridView with the filtered results
-                dataGridView2.DataSource = dataTable;
+                borroweddatagrid.DataSource = dataTable;
             }
         }
 
@@ -650,7 +650,7 @@ namespace LoginRegister
                            "quantity LIKE '%' + @SearchQuery + '%' OR " +
                            "returneddate LIKE '%' + @SearchQuery + '%';";
 
-            using (SqlConnection conn = new SqlConnection("Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;"))
+            using (SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True;"))
             {
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@SearchQuery", searchQuery);
@@ -661,14 +661,14 @@ namespace LoginRegister
                 adapter.Fill(dataTable);
 
                 // Reload the DataGridView with the filtered results
-                dataGridView3.DataSource = dataTable;
+                returneddatagrid.DataSource = dataTable;
             }
         }
 
 
         private void bookSearch_TextChanged(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=LENOVO-PC;Initial Catalog=master;Integrated Security=True;";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
             string searchText = bookSearch.Text;
             string query = "SELECT title, booksid, author, quantity FROM BookData WHERE title LIKE '%' + @searchText + '%' OR author LIKE '%' + @searchText + '%' OR booksid LIKE '%' + @searchText + '%'";
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -680,7 +680,7 @@ namespace LoginRegister
                     SqlDataReader reader = cmd.ExecuteReader();
                     DataTable dataTable = new DataTable();
                     dataTable.Load(reader);
-                    dataGridView1.DataSource = dataTable;
+                    availablebook.DataSource = dataTable;
                     con.Close();
                 }
             }
