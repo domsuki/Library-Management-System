@@ -31,6 +31,7 @@
             this.ReturnBTN = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.TitleComboBox = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,7 +66,6 @@
             this.BorrowerDataGrid = new System.Windows.Forms.DataGridView();
             this.ReturnedDataGrid = new System.Windows.Forms.DataGridView();
             this.BookDataGrid = new System.Windows.Forms.DataGridView();
-            this.TitleComboBox = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BorrowerDataGrid)).BeginInit();
@@ -84,6 +84,7 @@
             this.ReturnBTN.TabIndex = 21;
             this.ReturnBTN.Text = "Return";
             this.ReturnBTN.UseVisualStyleBackColor = false;
+            this.ReturnBTN.Click += new System.EventHandler(this.ReturnBTN_Click);
             // 
             // label9
             // 
@@ -113,6 +114,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(471, 209);
             this.panel2.TabIndex = 18;
+            // 
+            // TitleComboBox
+            // 
+            this.TitleComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleComboBox.FormattingEnabled = true;
+            this.TitleComboBox.Location = new System.Drawing.Point(156, 15);
+            this.TitleComboBox.Name = "TitleComboBox";
+            this.TitleComboBox.Size = new System.Drawing.Size(300, 36);
+            this.TitleComboBox.TabIndex = 11;
+            this.TitleComboBox.SelectedIndexChanged += new System.EventHandler(this.TitleComboBox_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -453,6 +464,7 @@
             this.BorrowerDataGrid.RowTemplate.Height = 24;
             this.BorrowerDataGrid.Size = new System.Drawing.Size(388, 205);
             this.BorrowerDataGrid.TabIndex = 39;
+//            this.BorrowerDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BorrowerDataGrid_CellContentClick);
             // 
             // ReturnedDataGrid
             // 
@@ -473,16 +485,7 @@
             this.BookDataGrid.RowTemplate.Height = 24;
             this.BookDataGrid.Size = new System.Drawing.Size(486, 211);
             this.BookDataGrid.TabIndex = 41;
-            // 
-            // TitleComboBox
-            // 
-            this.TitleComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleComboBox.FormattingEnabled = true;
-            this.TitleComboBox.Location = new System.Drawing.Point(156, 15);
-            this.TitleComboBox.Name = "TitleComboBox";
-            this.TitleComboBox.Size = new System.Drawing.Size(300, 36);
-            this.TitleComboBox.TabIndex = 11;
-            this.TitleComboBox.SelectedIndexChanged += new System.EventHandler(this.TitleComboBox_SelectedIndexChanged);
+   //         this.BookDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BookDataGrid_CellContentClick);
             // 
             // Borrower
             // 

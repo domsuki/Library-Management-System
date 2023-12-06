@@ -17,6 +17,8 @@ namespace LoginRegister
         public Borrower()
         {
             InitializeComponent();
+            BookDataGrid.CellClick += BookDataGrid_CellClick;
+            BorrowerDataGrid.CellClick += BorrowerDataGrid_CellClick;
             LoadBooks();
             BorrowLoad();
             ReturnLoad();
@@ -24,6 +26,67 @@ namespace LoginRegister
             // Call the method to populate student ID combo box
             StudentIDComboBox();
             BookTitleComboBox();
+
+
+        }
+
+        private void BorrowerDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < BorrowerDataGrid.Rows.Count)
+            {
+                DataGridViewRow row = BorrowerDataGrid.Rows[e.RowIndex];
+
+                string studentId = row.Cells["studentid"].Value.ToString();
+                string firstname = row.Cells["firstname"].Value.ToString();
+                string lastname = row.Cells["lastname"].Value.ToString();
+                string booksId = row.Cells["booksid"].Value.ToString();
+                string title = row.Cells["title"].Value.ToString();
+                string author = row.Cells["author"].Value.ToString();
+                string quantity = row.Cells["quantity"].Value.ToString();
+
+                // Set the values to the textboxes
+                studentidbox.Text = studentId;
+                firstnameread.Text = firstname;
+                lastnameread.Text = lastname;
+                bookidtxt.Text = booksId;
+                TitleComboBox.Text = title;
+                authortxt.Text = author;
+                quantitytxt.Text = quantity;
+            }
+        }
+
+        private void BookDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < BorrowerDataGrid.Rows.Count)
+            {
+                DataGridViewRow row = BorrowerDataGrid.Rows[e.RowIndex];
+
+                // Check if the cell values are not null
+                object titleObj = row.Cells["title"].Value;
+                object booksIdObj = row.Cells["booksid"].Value;
+                object authorObj = row.Cells["author"].Value;
+                object quantityObj = row.Cells["quantity"].Value;
+
+                if (titleObj != null && booksIdObj != null && authorObj != null && quantityObj != null)
+                {
+                    // Convert to string if not null
+                    string title = titleObj.ToString();
+                    string booksId = booksIdObj.ToString();
+                    string author = authorObj.ToString();
+                    string quantity = quantityObj.ToString();
+
+                    // Set the values to the textboxes
+                    TitleComboBox.Text = title;
+                    bookidtxt.Text = booksId;
+                    authortxt.Text = author;
+                    quantitytxt.Text = quantity;
+                }
+                else
+                {
+                    // Handle the case where one or more values are null
+                    // You might want to display an error message or handle it in a way that makes sense for your application.
+                }
+            }
         }
 
         private void UpdateBorrowerData(SqlConnection con, int studentId, int count)
@@ -252,7 +315,7 @@ namespace LoginRegister
             try
             {
                 int studentId;
-                if (studentidbox.SelectedItem is int) // Check if it's an int
+                if (studentidbox.SelectedItem is int)
                 {
                     studentId = (int)studentidbox.SelectedItem;
                 }
@@ -261,9 +324,6 @@ namespace LoginRegister
                     MessageBox.Show("Invalid selection for student.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-
-                // Remove the following line as studentId is already declared above
-                // int studentId = Convert.ToInt32(selectedStudent["studentid"]);
 
                 string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
                 using (SqlConnection con = new SqlConnection(connectionString))
@@ -291,6 +351,7 @@ namespace LoginRegister
                             }
                         }
 
+                        int quantity = 0;
 
                         // Check if the book exists in the Borrower table
                         using (SqlCommand selectCommand = new SqlCommand("SELECT COUNT(*) FROM Borrower WHERE booksid = @booksid AND studentid = @studentid", con))
@@ -298,94 +359,166 @@ namespace LoginRegister
                             selectCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
                             selectCommand.Parameters.AddWithValue("@studentid", studentId);
                             int count = Convert.ToInt32(selectCommand.ExecuteScalar());
-                            int quantity = count; // assign count value to quantity variable
-                            if (count > 0)
+                            quantity = count; // assign count value to quantity variable
+                        }
+
+                        if (quantity > 0)
+                        {
+                            DialogResult dialogResult = MessageBox.Show("There's an existing data, will update the quantity instead", "Update Quantity", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (dialogResult == DialogResult.OK)
                             {
-                                DialogResult dialogResult = MessageBox.Show("There's an exisiting data, will update the quantity instead", "Update Quantity", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                if (dialogResult == DialogResult.OK)
+                                // Update the quantity in the Borrower table
+                                using (SqlCommand updateCommand = new SqlCommand("UPDATE Borrower SET quantity = quantity + @quantity, borroweddate = @borroweddate, returnby = @returnby WHERE booksid = @booksid AND studentid = @studentid", con))
                                 {
-                                    // Update the quantity in the Borrower table
-                                    using (SqlCommand updateCommand = new SqlCommand("UPDATE Borrower SET quantity = quantity + @quantity WHERE booksid = @booksid AND studentid = @studentid", con))
-                                    {
-                                        updateCommand.Parameters.AddWithValue("@quantity", quantity);
-                                        updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
-                                        updateCommand.Parameters.AddWithValue("@studentid", studentId);
-                                        updateCommand.ExecuteNonQuery();
-
-                                        // Show confirmation message
-                                        MessageBox.Show("Quantity has been updated successfully.", "Update Quantity", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        BorrowLoad();
-                                    }
-
-                                    // Update the borrowed date in the Borrower table
-                                    using (SqlCommand updateCommand = new SqlCommand("UPDATE Borrower SET borroweddate = @borroweddate WHERE booksid = @booksid AND studentid = @studentid", con))
-                                    {
-                                        updateCommand.Parameters.AddWithValue("@borroweddate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                                        updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
-                                        updateCommand.Parameters.AddWithValue("@studentid", studentId);
-                                        updateCommand.ExecuteNonQuery();
-                                        BorrowLoad();
-                                    }
-
-                                    //update the return date in the Borrower table
-                                    using (SqlCommand updateCommand = new SqlCommand("UPDATE Borrower SET returnby = @returnby WHERE booksid = @booksid AND studentid = @studentid", con))
-                                    {
-                                        updateCommand.Parameters.AddWithValue("@returnby", DateTime.UtcNow.AddDays(7));
-                                        updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
-                                        updateCommand.Parameters.AddWithValue("@studentid", studentId);
-                                        updateCommand.ExecuteNonQuery();
-                                        BorrowLoad();
-                                    }
-
-                                    //update dbo.BookData for the quantity
-                                    using (SqlCommand updateCommand = new SqlCommand("UPDATE dbo.BookData SET quantity = CASE WHEN quantity > 0 THEN quantity - 1 ELSE quantity END WHERE booksid = @booksid", con))
-                                    {
-                                        updateCommand.Parameters.AddWithValue("@borrowedQuantity", quantity);
-                                        updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
-                                        updateCommand.ExecuteNonQuery();
-                                        BorrowLoad();
-                                        LoadBooks();
-                                        ReturnLoad();
-                                    }
-                                }
-                                else
-                                {
-
-
-                                }
-                            }
-                            else
-                            {
-                                // Insert a new record in the Borrower table
-                                using (SqlCommand insertCommand = new SqlCommand("INSERT INTO Borrower (studentid, firstname, lastname, booksid, title, author, quantity, borroweddate, returnby) VALUES (@studentid, @firstname, @lastname, @booksid, @title, @author, @quantity, @borroweddate, @returnby)", con))
-                                {
-                                    insertCommand.Parameters.AddWithValue("@studentid", studentId);
-                                    insertCommand.Parameters.AddWithValue("@firstname", firstnameread.Text);
-                                    insertCommand.Parameters.AddWithValue("@lastname", lastnameread.Text);
-                                    insertCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
-                                    insertCommand.Parameters.AddWithValue("@title", TitleComboBox.Text);
-                                    insertCommand.Parameters.AddWithValue("@author", authortxt.Text);
-                                    insertCommand.Parameters.AddWithValue("@quantity", quantitytxt.Text);
-                                    insertCommand.Parameters.AddWithValue("@borroweddate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-                                    insertCommand.Parameters.AddWithValue("@returnby", DateTime.UtcNow.AddDays(7)); // Use UTC time
-
-                                    insertCommand.ExecuteNonQuery();
-                                }
-                                using (SqlCommand updateCommand = new SqlCommand("UPDATE dbo.BookData SET quantity = CASE WHEN quantity > 0 THEN quantity - 1 ELSE quantity END WHERE booksid = @booksid", con))
-                                {
-                                    updateCommand.Parameters.AddWithValue("@borrowedQuantity", quantity);
+                                    updateCommand.Parameters.AddWithValue("@quantity", quantitytxt.Text);
+                                    updateCommand.Parameters.AddWithValue("@borroweddate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                                    updateCommand.Parameters.AddWithValue("@returnby", DateTime.UtcNow.AddDays(7));
                                     updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
+                                    updateCommand.Parameters.AddWithValue("@studentid", studentId);
                                     updateCommand.ExecuteNonQuery();
                                     BorrowLoad();
-                                    LoadBooks();
-                                    ReturnLoad();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            // Insert a new record in the Borrower table
+                            using (SqlCommand insertCommand = new SqlCommand("INSERT INTO Borrower (studentid, firstname, lastname, booksid, title, author, quantity, borroweddate, returnby) VALUES (@studentid, @firstname, @lastname, @booksid, @title, @author, @quantity, @borroweddate, @returnby)", con))
+                            {
+                                insertCommand.Parameters.AddWithValue("@studentid", studentId);
+                                insertCommand.Parameters.AddWithValue("@firstname", firstnameread.Text);
+                                insertCommand.Parameters.AddWithValue("@lastname", lastnameread.Text);
+                                insertCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
+                                insertCommand.Parameters.AddWithValue("@title", TitleComboBox.Text);
+                                insertCommand.Parameters.AddWithValue("@author", authortxt.Text);
+                                insertCommand.Parameters.AddWithValue("@quantity", quantitytxt.Text);
+                                insertCommand.Parameters.AddWithValue("@borroweddate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                                insertCommand.Parameters.AddWithValue("@returnby", DateTime.UtcNow.AddDays(7)); // Use UTC time
+
+                                insertCommand.ExecuteNonQuery();
+                            }
+
+                            // Update dbo.BookData for the quantity
+                            using (SqlCommand updateCommand = new SqlCommand("UPDATE dbo.BookData SET quantity = CASE WHEN quantity > 0 THEN quantity - @quantity ELSE quantity END WHERE booksid = @booksid", con))
+                            {
+                                updateCommand.Parameters.AddWithValue("@quantity", quantitytxt.Text);
+                                updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
+                                updateCommand.ExecuteNonQuery();
+                                
+                            }
+
+                            MessageBox.Show("Successfully added!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            BorrowLoad();
+                            LoadBooks();
+                            ReturnLoad();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void ReturnBTN_Click(object sender, EventArgs e)
+        {
+            if (studentidbox.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a student.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                int studentId;
+                if (studentidbox.SelectedItem is int) // Check if it's an int
+                {
+                    studentId = (int)studentidbox.SelectedItem;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid selection for student.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                using (SqlConnection con = new SqlConnection(connectionString))
+                {
+                    try
+                    {
+                        con.Open();
+
+                        // Check if the book is already returned
+                        using (SqlCommand checkReturnedCommand = new SqlCommand("SELECT COUNT(*) FROM Returned WHERE studentid = @studentid AND booksid = @booksid", con))
+                        {
+                            checkReturnedCommand.Parameters.AddWithValue("@studentid", studentId);
+                            checkReturnedCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
+
+                            int rowCount = (int)checkReturnedCommand.ExecuteScalar();
+
+                            if (rowCount > 0)
+                            {
+                                MessageBox.Show("This book has already been returned by the selected student.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                return; // Stop further processing
+                            }
+                        }
+
+                        // Remove the borrower record
+                        using (SqlCommand deleteCommand = new SqlCommand("DELETE FROM Borrower WHERE studentid = @studentid AND booksid = @booksid", con))
+                        {
+                            deleteCommand.Parameters.AddWithValue("@studentid", studentId);
+                            deleteCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
+                            deleteCommand.ExecuteNonQuery();
+                        }
+
+                        // Restore the book quantity
+                        int borrowedQuantity = int.Parse(quantitytxt.Text);
+                        using (SqlCommand updateCommand = new SqlCommand("UPDATE dbo.BookData SET quantity = quantity + @borrowedQuantity WHERE booksid = @booksid", con))
+                        {
+                            updateCommand.Parameters.AddWithValue("@borrowedQuantity", borrowedQuantity);
+                            updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
+                            updateCommand.ExecuteNonQuery();
+                            LoadBooks();
+                        }
+
+                        // Retrieve the borrowed date
+                        DateTime borrowedDate = DateTime.MinValue; // set default value
+                        using (SqlCommand selectCommand = new SqlCommand("SELECT borroweddate FROM Borrower WHERE studentid = @studentid AND booksid = @booksid", con))
+                        {
+                            selectCommand.Parameters.AddWithValue("@studentid", studentId);
+                            selectCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
+
+                            using (SqlDataReader reader = selectCommand.ExecuteReader())
+                            {
+                                if (reader.Read()) // check if there is data to read
+                                {
+                                    borrowedDate = reader.GetDateTime(0); // get the borrowed date
                                 }
                             }
                         }
 
-                        MessageBox.Show("Successfully added!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //add data to dbo.Returned database
+                        using (SqlCommand insertCommand = new SqlCommand("INSERT INTO Returned (studentid, firstname, lastname, booksid, title, author, quantity, returneddate) VALUES (@studentid, @firstname, @lastname, @booksid, @title, @author, @quantity, @returneddate)", con))
+                        {
+                            insertCommand.Parameters.AddWithValue("@studentid", studentId);
+                            insertCommand.Parameters.AddWithValue("@firstname", firstnameread.Text);
+                            insertCommand.Parameters.AddWithValue("@lastname", lastnameread.Text);
+                            insertCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
+                            insertCommand.Parameters.AddWithValue("@title", TitleComboBox.Text);
+                            insertCommand.Parameters.AddWithValue("@author", authortxt.Text);
+                            insertCommand.Parameters.AddWithValue("@quantity", int.Parse(quantitytxt.Text));
+                            insertCommand.Parameters.AddWithValue("@borroweddate", borrowedDate.ToString("yyyy-MM-dd HH:mm:ss"));
+                            insertCommand.Parameters.AddWithValue("@returneddate", DateTime.Now);
 
-                        // Reload data
+                            insertCommand.ExecuteNonQuery();
+                        }
+
+                        MessageBox.Show("Return successful!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         BorrowLoad();
                         LoadBooks();
                         ReturnLoad();
@@ -401,6 +534,7 @@ namespace LoginRegister
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }
 
