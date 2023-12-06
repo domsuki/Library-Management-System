@@ -4,6 +4,14 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace LoginRegister
+{
+}
+
+namespace LoginRegister
+{
+}
+
+namespace LoginRegister
 
 {
     public partial class StudentLog : Form

@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.deletebtn = new System.Windows.Forms.Button();
+            this.ReturnBTN = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
@@ -39,116 +38,52 @@
             this.label8 = new System.Windows.Forms.Label();
             this.quantitytxt = new System.Windows.Forms.TextBox();
             this.authortxt = new System.Windows.Forms.TextBox();
-            this.titletxt = new System.Windows.Forms.TextBox();
             this.bookidtxt = new System.Windows.Forms.TextBox();
-            this.borrowerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.masterDataSet2 = new LoginRegister.masterDataSet2();
-            this.borrowerTableAdapter = new LoginRegister.masterDataSet2TableAdapters.BorrowerTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
-            this.bookDataBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.bookDataDB = new LoginRegister.bookDataDB();
-            this.bookDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.booksDataSet = new LoginRegister.BooksDataSet();
-            this.booksBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.booksBorrowerData = new LoginRegister.BooksBorrowerData();
-            this.booksTableAdapter = new LoginRegister.BooksBorrowerDataTableAdapters.BooksTableAdapter();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.searchBorrowed = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BorrowBTN = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.firstnameread = new System.Windows.Forms.TextBox();
-            this.studentlogBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.masterDataSet5 = new LoginRegister.masterDataSet5();
             this.lastnameread = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.studentidbox = new System.Windows.Forms.ComboBox();
-            this.studentlogTableAdapter = new LoginRegister.masterDataSet5TableAdapters.studentlogTableAdapter();
             this.label13 = new System.Windows.Forms.Label();
-            this.printbtn = new System.Windows.Forms.Button();
-            this.returnedBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.returnedDB = new LoginRegister.ReturnedDB();
-            this.returnedBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.newReturnedDataSet = new LoginRegister.newReturnedDataSet();
-            this.returnedBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.returneddataset = new LoginRegister.returneddataset();
-            this.returnedTableAdapter = new LoginRegister.returneddatasetTableAdapters.ReturnedTableAdapter();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.bookDataTableAdapter = new LoginRegister.BooksDataSetTableAdapters.BookDataTableAdapter();
-            this.newBorrowDataSet = new LoginRegister.NewBorrowDataSet();
-            this.borrowerBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.borrowerTableAdapter1 = new LoginRegister.NewBorrowDataSetTableAdapters.BorrowerTableAdapter();
-            this.returnedTableAdapter1 = new LoginRegister.newReturnedDataSetTableAdapters.ReturnedTableAdapter();
-            this.borrowerBindingSource5 = new System.Windows.Forms.BindingSource(this.components);
-            this.borrowerDB = new LoginRegister.BorrowerDB();
-            this.borrowerBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.theNewBorrowDataGrid = new LoginRegister.TheNewBorrowDataGrid();
             this.borrowerTableAdapter2 = new LoginRegister.TheNewBorrowDataGridTableAdapters.BorrowerTableAdapter();
-            this.printReturnedbtn = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.returnedSearch = new System.Windows.Forms.TextBox();
             this.bookSearch = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.borrowedSearch = new System.Windows.Forms.TextBox();
-            this.borrowerBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
-            this.borrowerTableAdapter3 = new LoginRegister.BorrowerDBTableAdapters.BorrowerTableAdapter();
-            this.borrowerBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
-            this.returnedBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.returnedTableAdapter2 = new LoginRegister.ReturnedDBTableAdapters.ReturnedTableAdapter();
-            this.bookDataBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.bookDataTableAdapter1 = new LoginRegister.bookDataDBTableAdapters.BookDataTableAdapter();
-            this.borroweddatagrid = new System.Windows.Forms.DataGridView();
-            this.returneddatagrid = new System.Windows.Forms.DataGridView();
-            this.availablebook = new System.Windows.Forms.DataGridView();
+            this.BorrowerDataGrid = new System.Windows.Forms.DataGridView();
+            this.ReturnedDataGrid = new System.Windows.Forms.DataGridView();
+            this.BookDataGrid = new System.Windows.Forms.DataGridView();
+            this.TitleComboBox = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataDB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBorrowerData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentlogBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedDB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newReturnedDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returneddataset)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newBorrowDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerDB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.theNewBorrowDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borroweddatagrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returneddatagrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.availablebook)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BorrowerDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReturnedDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BookDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // deletebtn
+            // ReturnBTN
             // 
-            this.deletebtn.BackColor = System.Drawing.Color.Moccasin;
-            this.deletebtn.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.deletebtn.ForeColor = System.Drawing.Color.DarkBlue;
-            this.deletebtn.Location = new System.Drawing.Point(373, 593);
-            this.deletebtn.Name = "deletebtn";
-            this.deletebtn.Size = new System.Drawing.Size(144, 48);
-            this.deletebtn.TabIndex = 21;
-            this.deletebtn.Text = "Return";
-            this.deletebtn.UseVisualStyleBackColor = false;
-            this.deletebtn.Click += new System.EventHandler(this.deletebtn_Click);
+            this.ReturnBTN.BackColor = System.Drawing.Color.Moccasin;
+            this.ReturnBTN.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReturnBTN.ForeColor = System.Drawing.Color.DarkBlue;
+            this.ReturnBTN.Location = new System.Drawing.Point(373, 593);
+            this.ReturnBTN.Name = "ReturnBTN";
+            this.ReturnBTN.Size = new System.Drawing.Size(144, 48);
+            this.ReturnBTN.TabIndex = 21;
+            this.ReturnBTN.Text = "Return";
+            this.ReturnBTN.UseVisualStyleBackColor = false;
             // 
             // label9
             // 
@@ -164,6 +99,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.TitleComboBox);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label5);
@@ -171,7 +107,6 @@
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.quantitytxt);
             this.panel2.Controls.Add(this.authortxt);
-            this.panel2.Controls.Add(this.titletxt);
             this.panel2.Controls.Add(this.bookidtxt);
             this.panel2.Location = new System.Drawing.Point(61, 377);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
@@ -212,14 +147,13 @@
             this.label5.Size = new System.Drawing.Size(73, 28);
             this.label5.TabIndex = 1;
             this.label5.Text = "Author";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label6.Location = new System.Drawing.Point(3, 64);
+            this.label6.Location = new System.Drawing.Point(4, 12);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 28);
@@ -231,7 +165,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label8.Location = new System.Drawing.Point(2, 13);
+            this.label8.Location = new System.Drawing.Point(4, 59);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(81, 28);
@@ -258,39 +192,15 @@
             this.authortxt.Size = new System.Drawing.Size(300, 34);
             this.authortxt.TabIndex = 0;
             // 
-            // titletxt
-            // 
-            this.titletxt.BackColor = System.Drawing.Color.PapayaWhip;
-            this.titletxt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titletxt.Location = new System.Drawing.Point(156, 58);
-            this.titletxt.Margin = new System.Windows.Forms.Padding(4);
-            this.titletxt.Name = "titletxt";
-            this.titletxt.Size = new System.Drawing.Size(300, 34);
-            this.titletxt.TabIndex = 0;
-            // 
             // bookidtxt
             // 
             this.bookidtxt.BackColor = System.Drawing.Color.PapayaWhip;
             this.bookidtxt.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bookidtxt.Location = new System.Drawing.Point(156, 7);
+            this.bookidtxt.Location = new System.Drawing.Point(156, 59);
             this.bookidtxt.Margin = new System.Windows.Forms.Padding(4);
             this.bookidtxt.Name = "bookidtxt";
             this.bookidtxt.Size = new System.Drawing.Size(300, 34);
             this.bookidtxt.TabIndex = 0;
-            // 
-            // borrowerBindingSource
-            // 
-            this.borrowerBindingSource.DataMember = "Borrower";
-            this.borrowerBindingSource.DataSource = this.masterDataSet2;
-            // 
-            // masterDataSet2
-            // 
-            this.masterDataSet2.DataSetName = "masterDataSet2";
-            this.masterDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // borrowerTableAdapter
-            // 
-            this.borrowerTableAdapter.ClearBeforeFill = true;
             // 
             // label1
             // 
@@ -303,40 +213,6 @@
             this.label1.Size = new System.Drawing.Size(520, 62);
             this.label1.TabIndex = 26;
             this.label1.Text = "Student Transaction Page";
-            // 
-            // bookDataBindingSource2
-            // 
-            this.bookDataBindingSource2.DataMember = "BookData";
-            this.bookDataBindingSource2.DataSource = this.bookDataDB;
-            // 
-            // bookDataDB
-            // 
-            this.bookDataDB.DataSetName = "bookDataDB";
-            this.bookDataDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bookDataBindingSource
-            // 
-            this.bookDataBindingSource.DataMember = "BookData";
-            this.bookDataBindingSource.DataSource = this.booksDataSet;
-            // 
-            // booksDataSet
-            // 
-            this.booksDataSet.DataSetName = "BooksDataSet";
-            this.booksDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // booksBindingSource
-            // 
-            this.booksBindingSource.DataMember = "Books";
-            this.booksBindingSource.DataSource = this.booksBorrowerData;
-            // 
-            // booksBorrowerData
-            // 
-            this.booksBorrowerData.DataSetName = "BooksBorrowerData";
-            this.booksBorrowerData.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // booksTableAdapter
-            // 
-            this.booksTableAdapter.ClearBeforeFill = true;
             // 
             // label4
             // 
@@ -367,25 +243,25 @@
             this.searchBorrowed.AutoSize = true;
             this.searchBorrowed.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.searchBorrowed.ForeColor = System.Drawing.Color.DarkBlue;
-            this.searchBorrowed.Location = new System.Drawing.Point(976, 441);
+            this.searchBorrowed.Location = new System.Drawing.Point(987, 416);
             this.searchBorrowed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.searchBorrowed.Name = "searchBorrowed";
             this.searchBorrowed.Size = new System.Drawing.Size(150, 28);
             this.searchBorrowed.TabIndex = 1;
             this.searchBorrowed.Text = "Available Books";
             // 
-            // button1
+            // BorrowBTN
             // 
-            this.button1.BackColor = System.Drawing.Color.Moccasin;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.DarkBlue;
-            this.button1.Location = new System.Drawing.Point(223, 593);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 48);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "Borrow";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.addbtn_Click);
+            this.BorrowBTN.BackColor = System.Drawing.Color.Moccasin;
+            this.BorrowBTN.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BorrowBTN.ForeColor = System.Drawing.Color.DarkBlue;
+            this.BorrowBTN.Location = new System.Drawing.Point(223, 593);
+            this.BorrowBTN.Name = "BorrowBTN";
+            this.BorrowBTN.Size = new System.Drawing.Size(144, 48);
+            this.BorrowBTN.TabIndex = 23;
+            this.BorrowBTN.Text = "Borrow";
+            this.BorrowBTN.UseVisualStyleBackColor = false;
+            this.BorrowBTN.Click += new System.EventHandler(this.BorrowBTN_Click);
             // 
             // pictureBox1
             // 
@@ -401,7 +277,6 @@
             // firstnameread
             // 
             this.firstnameread.BackColor = System.Drawing.Color.PapayaWhip;
-            this.firstnameread.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentlogBindingSource, "firstname", true));
             this.firstnameread.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.firstnameread.Location = new System.Drawing.Point(217, 245);
             this.firstnameread.Margin = new System.Windows.Forms.Padding(4);
@@ -409,22 +284,10 @@
             this.firstnameread.ReadOnly = true;
             this.firstnameread.Size = new System.Drawing.Size(300, 34);
             this.firstnameread.TabIndex = 29;
-            this.firstnameread.TextChanged += new System.EventHandler(this.firstnameread_TextChanged);
-            // 
-            // studentlogBindingSource
-            // 
-            this.studentlogBindingSource.DataMember = "studentlog";
-            this.studentlogBindingSource.DataSource = this.masterDataSet5;
-            // 
-            // masterDataSet5
-            // 
-            this.masterDataSet5.DataSetName = "masterDataSet5";
-            this.masterDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lastnameread
             // 
             this.lastnameread.BackColor = System.Drawing.Color.PapayaWhip;
-            this.lastnameread.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentlogBindingSource, "lastname", true));
             this.lastnameread.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lastnameread.Location = new System.Drawing.Point(217, 296);
             this.lastnameread.Margin = new System.Windows.Forms.Padding(4);
@@ -472,8 +335,6 @@
             // studentidbox
             // 
             this.studentidbox.BackColor = System.Drawing.Color.PapayaWhip;
-            this.studentidbox.DataSource = this.studentlogBindingSource;
-            this.studentidbox.DisplayMember = "studentid";
             this.studentidbox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.studentidbox.FormattingEnabled = true;
             this.studentidbox.Location = new System.Drawing.Point(217, 196);
@@ -481,10 +342,6 @@
             this.studentidbox.Size = new System.Drawing.Size(300, 36);
             this.studentidbox.TabIndex = 30;
             this.studentidbox.SelectedIndexChanged += new System.EventHandler(this.studentidbox_SelectedIndexChanged);
-            // 
-            // studentlogTableAdapter
-            // 
-            this.studentlogTableAdapter.ClearBeforeFill = true;
             // 
             // label13
             // 
@@ -497,53 +354,6 @@
             this.label13.Size = new System.Drawing.Size(111, 38);
             this.label13.TabIndex = 19;
             this.label13.Text = "Reports";
-            // 
-            // printbtn
-            // 
-            this.printbtn.BackColor = System.Drawing.Color.Moccasin;
-            this.printbtn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.printbtn.ForeColor = System.Drawing.Color.DarkBlue;
-            this.printbtn.Location = new System.Drawing.Point(823, 386);
-            this.printbtn.Name = "printbtn";
-            this.printbtn.Size = new System.Drawing.Size(218, 34);
-            this.printbtn.TabIndex = 31;
-            this.printbtn.Text = "Print Borrowed Reports";
-            this.printbtn.UseVisualStyleBackColor = false;
-            this.printbtn.Click += new System.EventHandler(this.printbtn_Click);
-            // 
-            // returnedBindingSource3
-            // 
-            this.returnedBindingSource3.DataMember = "Returned";
-            this.returnedBindingSource3.DataSource = this.returnedDB;
-            // 
-            // returnedDB
-            // 
-            this.returnedDB.DataSetName = "ReturnedDB";
-            this.returnedDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // returnedBindingSource1
-            // 
-            this.returnedBindingSource1.DataMember = "Returned";
-            this.returnedBindingSource1.DataSource = this.newReturnedDataSet;
-            // 
-            // newReturnedDataSet
-            // 
-            this.newReturnedDataSet.DataSetName = "newReturnedDataSet";
-            this.newReturnedDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // returnedBindingSource
-            // 
-            this.returnedBindingSource.DataMember = "Returned";
-            this.returnedBindingSource.DataSource = this.returneddataset;
-            // 
-            // returneddataset
-            // 
-            this.returneddataset.DataSetName = "returneddataset";
-            this.returneddataset.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // returnedTableAdapter
-            // 
-            this.returnedTableAdapter.ClearBeforeFill = true;
             // 
             // label15
             // 
@@ -569,64 +379,13 @@
             this.label16.TabIndex = 1;
             this.label16.Text = "Borrowed";
             // 
-            // bookDataTableAdapter
-            // 
-            this.bookDataTableAdapter.ClearBeforeFill = true;
-            // 
-            // newBorrowDataSet
-            // 
-            this.newBorrowDataSet.DataSetName = "NewBorrowDataSet";
-            this.newBorrowDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // borrowerBindingSource1
-            // 
-            this.borrowerBindingSource1.DataMember = "Borrower";
-            this.borrowerBindingSource1.DataSource = this.newBorrowDataSet;
-            // 
             // borrowerTableAdapter1
             // 
             this.borrowerTableAdapter1.ClearBeforeFill = true;
             // 
-            // returnedTableAdapter1
-            // 
-            this.returnedTableAdapter1.ClearBeforeFill = true;
-            // 
-            // borrowerBindingSource5
-            // 
-            this.borrowerBindingSource5.DataMember = "Borrower";
-            this.borrowerBindingSource5.DataSource = this.borrowerDB;
-            // 
-            // borrowerDB
-            // 
-            this.borrowerDB.DataSetName = "BorrowerDB";
-            this.borrowerDB.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // borrowerBindingSource2
-            // 
-            this.borrowerBindingSource2.DataMember = "Borrower";
-            this.borrowerBindingSource2.DataSource = this.theNewBorrowDataGrid;
-            // 
-            // theNewBorrowDataGrid
-            // 
-            this.theNewBorrowDataGrid.DataSetName = "TheNewBorrowDataGrid";
-            this.theNewBorrowDataGrid.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // borrowerTableAdapter2
             // 
             this.borrowerTableAdapter2.ClearBeforeFill = true;
-            // 
-            // printReturnedbtn
-            // 
-            this.printReturnedbtn.BackColor = System.Drawing.Color.Moccasin;
-            this.printReturnedbtn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.printReturnedbtn.ForeColor = System.Drawing.Color.DarkBlue;
-            this.printReturnedbtn.Location = new System.Drawing.Point(1303, 391);
-            this.printReturnedbtn.Name = "printReturnedbtn";
-            this.printReturnedbtn.Size = new System.Drawing.Size(218, 34);
-            this.printReturnedbtn.TabIndex = 37;
-            this.printReturnedbtn.Text = "Print Returned Reports";
-            this.printReturnedbtn.UseVisualStyleBackColor = false;
-            this.printReturnedbtn.Click += new System.EventHandler(this.printReturnedbtn_Click);
             // 
             // label17
             // 
@@ -658,22 +417,20 @@
             this.returnedSearch.Name = "returnedSearch";
             this.returnedSearch.Size = new System.Drawing.Size(388, 22);
             this.returnedSearch.TabIndex = 38;
-            this.returnedSearch.TextChanged += new System.EventHandler(this.returnedSearch_TextChanged);
             // 
             // bookSearch
             // 
-            this.bookSearch.Location = new System.Drawing.Point(840, 489);
+            this.bookSearch.Location = new System.Drawing.Point(851, 464);
             this.bookSearch.Name = "bookSearch";
             this.bookSearch.Size = new System.Drawing.Size(486, 22);
             this.bookSearch.TabIndex = 38;
-            this.bookSearch.TextChanged += new System.EventHandler(this.bookSearch_TextChanged);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.DarkBlue;
-            this.label18.Location = new System.Drawing.Point(767, 482);
+            this.label18.Location = new System.Drawing.Point(778, 457);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(70, 28);
@@ -686,69 +443,46 @@
             this.borrowedSearch.Name = "borrowedSearch";
             this.borrowedSearch.Size = new System.Drawing.Size(388, 22);
             this.borrowedSearch.TabIndex = 38;
-            this.borrowedSearch.TextChanged += new System.EventHandler(this.borrowedSearch_TextChanged);
             // 
-            // borrowerBindingSource3
+            // BorrowerDataGrid
             // 
-            this.borrowerBindingSource3.DataMember = "Borrower";
-            this.borrowerBindingSource3.DataSource = this.borrowerDB;
+            this.BorrowerDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BorrowerDataGrid.Location = new System.Drawing.Point(653, 196);
+            this.BorrowerDataGrid.Name = "BorrowerDataGrid";
+            this.BorrowerDataGrid.RowHeadersWidth = 51;
+            this.BorrowerDataGrid.RowTemplate.Height = 24;
+            this.BorrowerDataGrid.Size = new System.Drawing.Size(388, 205);
+            this.BorrowerDataGrid.TabIndex = 39;
             // 
-            // borrowerTableAdapter3
+            // ReturnedDataGrid
             // 
-            this.borrowerTableAdapter3.ClearBeforeFill = true;
+            this.ReturnedDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ReturnedDataGrid.Location = new System.Drawing.Point(1133, 196);
+            this.ReturnedDataGrid.Name = "ReturnedDataGrid";
+            this.ReturnedDataGrid.RowHeadersWidth = 51;
+            this.ReturnedDataGrid.RowTemplate.Height = 24;
+            this.ReturnedDataGrid.Size = new System.Drawing.Size(388, 205);
+            this.ReturnedDataGrid.TabIndex = 40;
             // 
-            // borrowerBindingSource4
+            // BookDataGrid
             // 
-            this.borrowerBindingSource4.DataMember = "Borrower";
-            this.borrowerBindingSource4.DataSource = this.borrowerDB;
+            this.BookDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BookDataGrid.Location = new System.Drawing.Point(851, 511);
+            this.BookDataGrid.Name = "BookDataGrid";
+            this.BookDataGrid.RowHeadersWidth = 51;
+            this.BookDataGrid.RowTemplate.Height = 24;
+            this.BookDataGrid.Size = new System.Drawing.Size(486, 211);
+            this.BookDataGrid.TabIndex = 41;
             // 
-            // returnedBindingSource2
+            // TitleComboBox
             // 
-            this.returnedBindingSource2.DataMember = "Returned";
-            this.returnedBindingSource2.DataSource = this.returnedDB;
-            // 
-            // returnedTableAdapter2
-            // 
-            this.returnedTableAdapter2.ClearBeforeFill = true;
-            // 
-            // bookDataBindingSource1
-            // 
-            this.bookDataBindingSource1.DataMember = "BookData";
-            this.bookDataBindingSource1.DataSource = this.booksDataSet;
-            // 
-            // bookDataTableAdapter1
-            // 
-            this.bookDataTableAdapter1.ClearBeforeFill = true;
-            // 
-            // borroweddatagrid
-            // 
-            this.borroweddatagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.borroweddatagrid.Location = new System.Drawing.Point(653, 196);
-            this.borroweddatagrid.Name = "borroweddatagrid";
-            this.borroweddatagrid.RowHeadersWidth = 51;
-            this.borroweddatagrid.RowTemplate.Height = 24;
-            this.borroweddatagrid.Size = new System.Drawing.Size(388, 166);
-            this.borroweddatagrid.TabIndex = 39;
-            // 
-            // returneddatagrid
-            // 
-            this.returneddatagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.returneddatagrid.Location = new System.Drawing.Point(1133, 196);
-            this.returneddatagrid.Name = "returneddatagrid";
-            this.returneddatagrid.RowHeadersWidth = 51;
-            this.returneddatagrid.RowTemplate.Height = 24;
-            this.returneddatagrid.Size = new System.Drawing.Size(388, 166);
-            this.returneddatagrid.TabIndex = 39;
-            // 
-            // availablebook
-            // 
-            this.availablebook.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.availablebook.Location = new System.Drawing.Point(877, 529);
-            this.availablebook.Name = "availablebook";
-            this.availablebook.RowHeadersWidth = 51;
-            this.availablebook.RowTemplate.Height = 24;
-            this.availablebook.Size = new System.Drawing.Size(388, 166);
-            this.availablebook.TabIndex = 39;
+            this.TitleComboBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleComboBox.FormattingEnabled = true;
+            this.TitleComboBox.Location = new System.Drawing.Point(156, 15);
+            this.TitleComboBox.Name = "TitleComboBox";
+            this.TitleComboBox.Size = new System.Drawing.Size(300, 36);
+            this.TitleComboBox.TabIndex = 11;
+            this.TitleComboBox.SelectedIndexChanged += new System.EventHandler(this.TitleComboBox_SelectedIndexChanged);
             // 
             // Borrower
             // 
@@ -756,14 +490,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(1533, 734);
-            this.Controls.Add(this.availablebook);
-            this.Controls.Add(this.returneddatagrid);
-            this.Controls.Add(this.borroweddatagrid);
+            this.Controls.Add(this.BookDataGrid);
+            this.Controls.Add(this.ReturnedDataGrid);
+            this.Controls.Add(this.BorrowerDataGrid);
             this.Controls.Add(this.borrowedSearch);
             this.Controls.Add(this.returnedSearch);
             this.Controls.Add(this.bookSearch);
-            this.Controls.Add(this.printReturnedbtn);
-            this.Controls.Add(this.printbtn);
             this.Controls.Add(this.studentidbox);
             this.Controls.Add(this.lastnameread);
             this.Controls.Add(this.firstnameread);
@@ -772,8 +504,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.deletebtn);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ReturnBTN);
+            this.Controls.Add(this.BorrowBTN);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label17);
@@ -789,39 +521,12 @@
             this.Name = "Borrower";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Borrower";
-            this.Load += new System.EventHandler(this.Borrower_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataDB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.booksDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.booksBorrowerData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentlogBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.masterDataSet5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedDB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newReturnedDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returneddataset)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newBorrowDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerDB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.theNewBorrowDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borrowerBindingSource4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returnedBindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bookDataBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.borroweddatagrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.returneddatagrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.availablebook)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BorrowerDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReturnedDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BookDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -829,7 +534,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button deletebtn;
+        private System.Windows.Forms.Button ReturnBTN;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label14;
@@ -839,70 +544,33 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox quantitytxt;
         private System.Windows.Forms.TextBox authortxt;
-        private System.Windows.Forms.TextBox titletxt;
         private System.Windows.Forms.TextBox bookidtxt;
-        private masterDataSet2 masterDataSet2;
-        private System.Windows.Forms.BindingSource borrowerBindingSource;
-        private masterDataSet2TableAdapters.BorrowerTableAdapter borrowerTableAdapter;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private BooksBorrowerData booksBorrowerData;
-        private System.Windows.Forms.BindingSource booksBindingSource;
-        private BooksBorrowerDataTableAdapters.BooksTableAdapter booksTableAdapter;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label searchBorrowed;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BorrowBTN;
         private System.Windows.Forms.TextBox firstnameread;
         private System.Windows.Forms.TextBox lastnameread;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox studentidbox;
-        private masterDataSet5 masterDataSet5;
-        private System.Windows.Forms.BindingSource studentlogBindingSource;
-        private masterDataSet5TableAdapters.studentlogTableAdapter studentlogTableAdapter;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button printbtn;
-        private returneddataset returneddataset;
-        private System.Windows.Forms.BindingSource returnedBindingSource;
-        private returneddatasetTableAdapters.ReturnedTableAdapter returnedTableAdapter;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private BooksDataSet booksDataSet;
-        private System.Windows.Forms.BindingSource bookDataBindingSource;
-        private BooksDataSetTableAdapters.BookDataTableAdapter bookDataTableAdapter;
-        private NewBorrowDataSet newBorrowDataSet;
-        private System.Windows.Forms.BindingSource borrowerBindingSource1;
         private NewBorrowDataSetTableAdapters.BorrowerTableAdapter borrowerTableAdapter1;
-        private newReturnedDataSet newReturnedDataSet;
-        private System.Windows.Forms.BindingSource returnedBindingSource1;
-        private newReturnedDataSetTableAdapters.ReturnedTableAdapter returnedTableAdapter1;
-        private TheNewBorrowDataGrid theNewBorrowDataGrid;
-        private System.Windows.Forms.BindingSource borrowerBindingSource2;
         private TheNewBorrowDataGridTableAdapters.BorrowerTableAdapter borrowerTableAdapter2;
-        private System.Windows.Forms.Button printReturnedbtn;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox returnedSearch;
         private System.Windows.Forms.TextBox bookSearch;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox borrowedSearch;
-        private BorrowerDB borrowerDB;
-        private System.Windows.Forms.BindingSource borrowerBindingSource3;
-        private BorrowerDBTableAdapters.BorrowerTableAdapter borrowerTableAdapter3;
-        private System.Windows.Forms.BindingSource borrowerBindingSource4;
-        private ReturnedDB returnedDB;
-        private System.Windows.Forms.BindingSource returnedBindingSource2;
-        private ReturnedDBTableAdapters.ReturnedTableAdapter returnedTableAdapter2;
-        private System.Windows.Forms.BindingSource bookDataBindingSource1;
-        private System.Windows.Forms.BindingSource returnedBindingSource3;
-        private bookDataDB bookDataDB;
-        private System.Windows.Forms.BindingSource bookDataBindingSource2;
-        private bookDataDBTableAdapters.BookDataTableAdapter bookDataTableAdapter1;
-        private System.Windows.Forms.BindingSource borrowerBindingSource5;
-        private System.Windows.Forms.DataGridView borroweddatagrid;
-        private System.Windows.Forms.DataGridView returneddatagrid;
-        private System.Windows.Forms.DataGridView availablebook;
+        private System.Windows.Forms.DataGridView BorrowerDataGrid;
+        private System.Windows.Forms.DataGridView ReturnedDataGrid;
+        private System.Windows.Forms.DataGridView BookDataGrid;
+        private System.Windows.Forms.ComboBox TitleComboBox;
     }
 }
