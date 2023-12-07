@@ -9,16 +9,20 @@ using System.Windows.Forms;
 
 namespace LoginRegister
 {
-    public partial class Borrower : Form
+    public partial class SearchBookTXT : Form
     {
         // Assuming you have a connection string defined somewhere
         private string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
 
-        public Borrower()
+        public SearchBookTXT()
         {
             InitializeComponent();
-            BookDataGrid.CellClick += BookDataGrid_CellClick;
+
             BorrowerDataGrid.CellClick += BorrowerDataGrid_CellClick;
+            ReturnedDataGrid.CellClick += ReturnedDataGrid_CellContentClick;
+            DataBooks.CellClick += DataBooks_CellContentClick;
+
+
             LoadBooks();
             BorrowLoad();
             ReturnLoad();
@@ -55,39 +59,6 @@ namespace LoginRegister
             }
         }
 
-        private void BookDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.RowIndex < BorrowerDataGrid.Rows.Count)
-            {
-                DataGridViewRow row = BorrowerDataGrid.Rows[e.RowIndex];
-
-                // Check if the cell values are not null
-                object titleObj = row.Cells["title"].Value;
-                object booksIdObj = row.Cells["booksid"].Value;
-                object authorObj = row.Cells["author"].Value;
-                object quantityObj = row.Cells["quantity"].Value;
-
-                if (titleObj != null && booksIdObj != null && authorObj != null && quantityObj != null)
-                {
-                    // Convert to string if not null
-                    string title = titleObj.ToString();
-                    string booksId = booksIdObj.ToString();
-                    string author = authorObj.ToString();
-                    string quantity = quantityObj.ToString();
-
-                    // Set the values to the textboxes
-                    TitleComboBox.Text = title;
-                    bookidtxt.Text = booksId;
-                    authortxt.Text = author;
-                    quantitytxt.Text = quantity;
-                }
-                else
-                {
-                    // Handle the case where one or more values are null
-                    // You might want to display an error message or handle it in a way that makes sense for your application.
-                }
-            }
-        }
 
         private void UpdateBorrowerData(SqlConnection con, int studentId, int count)
         {
@@ -252,7 +223,7 @@ namespace LoginRegister
                     SqlDataAdapter adapter = new SqlDataAdapter(query, con);
                     DataTable table = new DataTable();
                     adapter.Fill(table);
-                    BookDataGrid.DataSource = table;
+                    DataBooks.DataSource = table;
                 }
                 catch (Exception ex)
                 {
@@ -354,10 +325,11 @@ namespace LoginRegister
                         int quantity = 0;
 
                         // Check if the book exists in the Borrower table
-                        using (SqlCommand selectCommand = new SqlCommand("SELECT COUNT(*) FROM Borrower WHERE booksid = @booksid AND studentid = @studentid", con))
+                        using (SqlCommand selectCommand = new SqlCommand("SELECT COUNT(*) FROM Borrower WHERE booksid = @booksid AND title = @title AND studentid = @studentid", con))
                         {
                             selectCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
                             selectCommand.Parameters.AddWithValue("@studentid", studentId);
+                            selectCommand.Parameters.AddWithValue("@title", TitleComboBox.Text);
                             int count = Convert.ToInt32(selectCommand.ExecuteScalar());
                             quantity = count; // assign count value to quantity variable
                         }
@@ -404,7 +376,7 @@ namespace LoginRegister
                                 updateCommand.Parameters.AddWithValue("@quantity", quantitytxt.Text);
                                 updateCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
                                 updateCommand.ExecuteNonQuery();
-                                
+
                             }
 
                             MessageBox.Show("Successfully added!", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -535,6 +507,175 @@ namespace LoginRegister
             }
         }
 
+        private void clearBtn_Click(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\source\\repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                if (studentidbox.SelectedItem == null)
+                {
+                    MessageBox.Show("Please select a student.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                try
+                {
+                    int studentId;
+                    if (studentidbox.SelectedItem is int) // Check if it's an int
+                    {
+                        studentId = (int)studentidbox.SelectedItem;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid selection for student.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    con.Open();
+                    using (SqlCommand deleteCommand = new SqlCommand("DELETE FROM Returned WHERE studentid = @studentid AND booksid = @booksid", con))
+                    {
+                        deleteCommand.Parameters.AddWithValue("@studentid", studentId);
+                        deleteCommand.Parameters.AddWithValue("@booksid", bookidtxt.Text);
+
+                        // Execute the delete command
+                        int rowsAffected = deleteCommand.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Returned database has been successfully cleared");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No matching records found for deletion.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+
+                    // Refresh data
+                    BorrowLoad();
+                    LoadBooks();
+                    ReturnLoad();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    con.Close(); // Close the connection in a finally block to ensure it's closed even if an exception occurs
+                }
+            }
+        }
+
+
+        private void ReturnedDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0 && e.RowIndex < ReturnedDataGrid.Rows.Count)
+            {
+                DataGridViewRow row = ReturnedDataGrid.Rows[e.RowIndex];
+
+                string studentIdreturned = row.Cells["studentid"].Value.ToString();
+                string firstnamereturned = row.Cells["firstname"].Value.ToString();
+                string lastnamereturned = row.Cells["lastname"].Value.ToString();
+                string booksIdreturned = row.Cells["booksid"].Value.ToString();
+                string titlereturned = row.Cells["title"].Value.ToString();
+                string authorreturned = row.Cells["author"].Value.ToString();
+                string quantityreturned = row.Cells["quantity"].Value.ToString();
+
+                // Set the values to the textboxes
+                studentidbox.Text = studentIdreturned;
+                firstnameread.Text = firstnamereturned;
+                lastnameread.Text = lastnamereturned;
+                bookidtxt.Text = booksIdreturned;
+                TitleComboBox.Text = titlereturned;
+                authortxt.Text = authorreturned;
+                quantitytxt.Text = quantityreturned;
+            }
+
+        }
+
+        private void borrowedSearch_TextChanged(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
+            string searchText = borrowedSearch.Text;
+            string query = "SELECT studentid, firstname, lastname, booksid, title, author, quantity, borroweddate, returnby FROM Borrower WHERE studentid LIKE '%' + @searchText + '%' OR firstname LIKE '%' + @searchText + '%' OR lastname LIKE '%' + @searchText + '%' OR booksid LIKE '%' + @searchText + '%' OR title LIKE '%' + @searchText + '%' OR author LIKE '%' + @searchText + '%' OR quantity LIKE '%' + @searchText + '%' OR returnby LIKE '%' + @searchText + '%'";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@searchText", searchText);
+                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(reader);
+                    BorrowerDataGrid.DataSource = dataTable;
+                    con.Close();
+                }
+            }
+        }
+
+        private void returnedSearch_TextChanged(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
+            string searchText = returnedSearch.Text;
+            string query = "SELECT studentid, firstname, lastname, booksid, title, author, quantity, borroweddate, returnby FROM Borrower WHERE studentid LIKE '%' + @searchText + '%' OR firstname LIKE '%' + @searchText + '%' OR lastname LIKE '%' + @searchText + '%' OR booksid LIKE '%' + @searchText + '%' OR title LIKE '%' + @searchText + '%' OR author LIKE '%' + @searchText + '%' OR quantity LIKE '%' + @searchText + '%' OR returndate LIKE '%' + @searchText + '%'";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@searchText", searchText);
+                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(reader);
+                    ReturnedDataGrid.DataSource = dataTable;
+                    con.Close();
+                }
+            }
+        }
+
+        private void DataBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < DataBooks.Rows.Count)
+            {
+                DataGridViewRow row = DataBooks.Rows[e.RowIndex];
+
+
+                string booksIdindex = row.Cells["booksid"].Value.ToString();
+                string titleindex = row.Cells["title"].Value.ToString();
+                string authorindex = row.Cells["author"].Value.ToString();
+                string quantityindex = row.Cells["quantity"].Value.ToString();
+
+                // Set the values to the textboxes
+
+                bookidtxt.Text = booksIdindex;
+                TitleComboBox.Text = titleindex;
+                authortxt.Text = authorindex;
+                quantitytxt.Text = quantityindex;
+            }
+
+        }
+
+        private void SearchABook_TextChanged(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
+            string searchText = SearchABook.Text;
+            string query = "SELECT title, booksid, author, quantity FROM BookData WHERE title LIKE '%' + @searchText + '%' OR author LIKE '%' + @searchText + '%' OR booksid LIKE '%' + @searchText + '%'";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@searchText", searchText);
+                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(reader);
+                    DataBooks.DataSource = dataTable;
+                    con.Close();
+                }
+            }
+        }
     }
 }
 

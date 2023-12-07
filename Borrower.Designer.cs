@@ -1,6 +1,6 @@
 ﻿namespace LoginRegister
 {
-    partial class Borrower
+    partial class SearchBookTXT
     {
         /// <summary>
         /// Required designer variable.
@@ -60,17 +60,18 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.returnedSearch = new System.Windows.Forms.TextBox();
-            this.bookSearch = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.borrowedSearch = new System.Windows.Forms.TextBox();
             this.BorrowerDataGrid = new System.Windows.Forms.DataGridView();
             this.ReturnedDataGrid = new System.Windows.Forms.DataGridView();
-            this.BookDataGrid = new System.Windows.Forms.DataGridView();
+            this.clearBtn = new System.Windows.Forms.Button();
+            this.SearchABook = new System.Windows.Forms.TextBox();
+            this.DataBooks = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BorrowerDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReturnedDataGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BookDataGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataBooks)).BeginInit();
             this.SuspendLayout();
             // 
             // ReturnBTN
@@ -428,13 +429,7 @@
             this.returnedSearch.Name = "returnedSearch";
             this.returnedSearch.Size = new System.Drawing.Size(388, 22);
             this.returnedSearch.TabIndex = 38;
-            // 
-            // bookSearch
-            // 
-            this.bookSearch.Location = new System.Drawing.Point(851, 464);
-            this.bookSearch.Name = "bookSearch";
-            this.bookSearch.Size = new System.Drawing.Size(486, 22);
-            this.bookSearch.TabIndex = 38;
+            this.returnedSearch.TextChanged += new System.EventHandler(this.returnedSearch_TextChanged);
             // 
             // label18
             // 
@@ -454,6 +449,7 @@
             this.borrowedSearch.Name = "borrowedSearch";
             this.borrowedSearch.Size = new System.Drawing.Size(388, 22);
             this.borrowedSearch.TabIndex = 38;
+            this.borrowedSearch.TextChanged += new System.EventHandler(this.borrowedSearch_TextChanged);
             // 
             // BorrowerDataGrid
             // 
@@ -464,7 +460,6 @@
             this.BorrowerDataGrid.RowTemplate.Height = 24;
             this.BorrowerDataGrid.Size = new System.Drawing.Size(388, 205);
             this.BorrowerDataGrid.TabIndex = 39;
-//            this.BorrowerDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BorrowerDataGrid_CellContentClick);
             // 
             // ReturnedDataGrid
             // 
@@ -475,30 +470,50 @@
             this.ReturnedDataGrid.RowTemplate.Height = 24;
             this.ReturnedDataGrid.Size = new System.Drawing.Size(388, 205);
             this.ReturnedDataGrid.TabIndex = 40;
+            this.ReturnedDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ReturnedDataGrid_CellContentClick);
             // 
-            // BookDataGrid
+            // clearBtn
             // 
-            this.BookDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.BookDataGrid.Location = new System.Drawing.Point(851, 511);
-            this.BookDataGrid.Name = "BookDataGrid";
-            this.BookDataGrid.RowHeadersWidth = 51;
-            this.BookDataGrid.RowTemplate.Height = 24;
-            this.BookDataGrid.Size = new System.Drawing.Size(486, 211);
-            this.BookDataGrid.TabIndex = 41;
-   //         this.BookDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.BookDataGrid_CellContentClick);
+            this.clearBtn.Location = new System.Drawing.Point(1408, 416);
+            this.clearBtn.Name = "clearBtn";
+            this.clearBtn.Size = new System.Drawing.Size(113, 23);
+            this.clearBtn.TabIndex = 42;
+            this.clearBtn.Text = "Clear Returned";
+            this.clearBtn.UseVisualStyleBackColor = true;
+            this.clearBtn.Click += new System.EventHandler(this.clearBtn_Click);
             // 
-            // Borrower
+            // SearchABook
+            // 
+            this.SearchABook.Location = new System.Drawing.Point(851, 462);
+            this.SearchABook.Name = "SearchABook";
+            this.SearchABook.Size = new System.Drawing.Size(486, 22);
+            this.SearchABook.TabIndex = 43;
+            this.SearchABook.TextChanged += new System.EventHandler(this.SearchABook_TextChanged);
+            // 
+            // DataBooks
+            // 
+            this.DataBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataBooks.Location = new System.Drawing.Point(851, 495);
+            this.DataBooks.Name = "DataBooks";
+            this.DataBooks.RowHeadersWidth = 51;
+            this.DataBooks.RowTemplate.Height = 24;
+            this.DataBooks.Size = new System.Drawing.Size(486, 227);
+            this.DataBooks.TabIndex = 44;
+            this.DataBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataBooks_CellContentClick);
+            // 
+            // SearchBookTXT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(1533, 734);
-            this.Controls.Add(this.BookDataGrid);
+            this.Controls.Add(this.DataBooks);
+            this.Controls.Add(this.SearchABook);
+            this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.ReturnedDataGrid);
             this.Controls.Add(this.BorrowerDataGrid);
             this.Controls.Add(this.borrowedSearch);
             this.Controls.Add(this.returnedSearch);
-            this.Controls.Add(this.bookSearch);
             this.Controls.Add(this.studentidbox);
             this.Controls.Add(this.lastnameread);
             this.Controls.Add(this.firstnameread);
@@ -521,7 +536,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.panel2);
             this.MaximizeBox = false;
-            this.Name = "Borrower";
+            this.Name = "SearchBookTXT";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Borrower";
             this.panel2.ResumeLayout(false);
@@ -529,7 +544,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BorrowerDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ReturnedDataGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BookDataGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -568,12 +583,13 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox returnedSearch;
-        private System.Windows.Forms.TextBox bookSearch;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox borrowedSearch;
         private System.Windows.Forms.DataGridView BorrowerDataGrid;
         private System.Windows.Forms.DataGridView ReturnedDataGrid;
-        private System.Windows.Forms.DataGridView BookDataGrid;
         private System.Windows.Forms.ComboBox TitleComboBox;
+        private System.Windows.Forms.Button clearBtn;
+        private System.Windows.Forms.TextBox SearchABook;
+        private System.Windows.Forms.DataGridView DataBooks;
     }
 }

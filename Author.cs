@@ -16,7 +16,7 @@ namespace LoginRegister
         public Author()
         {
             InitializeComponent();
-            dataGridView1.CellClick += dataGridView1_CellClick;
+            AuthorGrid.CellClick += dataGridView1_CellClick;
         }
 
         private void Author_Load(object sender, EventArgs e)
@@ -28,9 +28,9 @@ namespace LoginRegister
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dataGridView1.Rows.Count)
+            if (e.RowIndex >= 0 && e.RowIndex < AuthorGrid.Rows.Count)
             {
-                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                DataGridViewRow row = AuthorGrid.Rows[e.RowIndex];
 
                 string authorid = row.Cells["AuthorID"].Value.ToString();
                 string authorname = row.Cells["AuthorName"].Value.ToString();
@@ -60,7 +60,7 @@ namespace LoginRegister
                         adapter.SelectCommand = CMD;
 
                         adapter.Fill(dataSet, "Author");
-                        dataGridView1.DataSource = dataSet.Tables["Author"];
+                        AuthorGrid.DataSource = dataSet.Tables["Author"];
                     }
                 }
                 catch (Exception ex)
@@ -72,10 +72,10 @@ namespace LoginRegister
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             // Assuming you have a DataGridView with the name dataGridView1
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (AuthorGrid.SelectedRows.Count > 0)
             {
                 // Get the selected AuthorID from the DataGridView
-                string selectedAuthorID = dataGridView1.SelectedRows[0].Cells["AuthorID"].Value.ToString();
+                string selectedAuthorID = AuthorGrid.SelectedRows[0].Cells["AuthorID"].Value.ToString();
 
                 // Ask for confirmation before deleting
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this author?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -188,10 +188,10 @@ namespace LoginRegister
         private void updateBtn_Click(object sender, EventArgs e)
         {
             // Assuming you have a DataGridView with the name dataGridView1
-            if (dataGridView1.SelectedRows.Count > 0)
+            if (AuthorGrid.SelectedRows.Count > 0)
             {
                 // Get the selected AuthorID from the DataGridView
-                string selectedAuthorID = dataGridView1.SelectedRows[0].Cells["AuthorID"].Value.ToString();
+                string selectedAuthorID = AuthorGrid.SelectedRows[0].Cells["AuthorID"].Value.ToString();
 
                 // Get values from text boxes
                 string updatedAuthorID = authorID.Text;
@@ -256,6 +256,26 @@ namespace LoginRegister
                 MessageBox.Show("Please select a row to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void AuthorSearch_TextChanged(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\d0msk\\Source\\Repos\\Library Management-System\\Database.mdf\";Integrated Security=True";
+            string searchText = AuthorSearch.Text;
+            string query = "SELECT AuthorID, AuthorName, NoOfBooks FROM Author WHERE AuthorID LIKE '%' + @searchText + '%' OR AuthorName LIKE '%' + @searchText + '%' OR CAST(NoOfBooks AS NVARCHAR) LIKE '%' + @searchText + '%'";
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@searchText", searchText);
+                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable dataTable = new DataTable();
+                    dataTable.Load(reader);
+                    AuthorGrid.DataSource = dataTable;
+                    con.Close();
+                }
+            }
         }
+    }
 }
 

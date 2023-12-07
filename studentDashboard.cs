@@ -46,7 +46,7 @@ namespace LoginRegister
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            Borrower borrower = new Borrower();
+            SearchBookTXT borrower = new SearchBookTXT();
             borrower.Show();
         }
 
@@ -58,7 +58,7 @@ namespace LoginRegister
 
         private void borrowerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Borrower borrower = new Borrower();
+            SearchBookTXT borrower = new SearchBookTXT();
             borrower.Show();
         }
     }
